@@ -1,0 +1,187 @@
+{
+  "app": {
+    "name": "UAM",
+    "author": "Ramakrishna R",
+    "description": "This is an User Access Management application. Please manage the users, access etc here.",
+    "privacy": "privacy",
+    "rights": "All rights reserved",
+    "version": "v 1.0",
+    "year": "2025",
+    "general": {
+      "button": {
+        "all": "All",
+        "add": "Add",
+        "edit": "Edit",
+        "view": "View",
+        "submit": "Submit",
+        "reset": "Reset",
+        "delete": "Delete",
+        "yes": "Yes",
+        "no": "No",
+        "back": "Back"
+      },
+      "page": {
+        "id": "Id",
+        "name": "Name",
+        "description": "Description",
+        "status": "Status"
+      },
+      "pagination": {
+        "noData": "No data found",
+        "options": "Options",
+        "searchField": "Search field",
+        "searchValue": "Search value",
+        "select": "Select",
+        "id": "Id",
+        "name": "Name",
+        "description": "Description",
+        "status": "Status"
+      },
+      "tooltip": {
+        "general": "Field: {{controlName}} -> Min Length: {{minLength}}, Max Length: {{maxLength}}, Allowed: {{pattern}}",
+        "no-length": "Field: {{controlName}} -> Allowed: {{pattern}}"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "popup": {
+        "deletePopUp": "Are you sure to delete?",
+        "statusPopUp": "Are you sure to change status?"
+      },
+      "audit": {
+        "createdAt": "Created At",
+        "createdBy": "Created By",
+        "modifiedAt": "Modified At",
+        "modifiedBy": "Modified By"
+      }
+    },
+    "page": {
+      "login": {
+        "content-1": "Organization Management",
+        "content-2": "Securely control who can access your systems, applications, and data. With streamlined authentication, role-based permissions, and real-time monitoring, organization management ensures that the right people have the right access at the right time—keeping your organization safe and compliant.",
+        "sign-in": "Sign In",
+        "sign-in-desc": "Enter your credential to get access",
+        "name": "Name",
+        "name-hint": "Please input your name!",
+        "organization-name": "Organization Name",
+        "organization-name-hint": "Please input your Organization Name!",
+        "organization-code": "Organization Code",
+        "organization-code-hint": "Please input your Organization Code!",
+        "username": "Username",
+        "username-hint": "Please input your username!",
+        "password": "Password",
+        "password-hint": "Please input your Password!",
+        "forgot-password": "Forget Password?",
+        "sign-up": "Signup",
+        "sign-up-page-hint": "Create your account to get access",
+        "sign-up-hint": "Don't have an account?",
+        "email": "Email",
+        "email-hint": "Please provide email!",
+        "phone": "Phone",
+        "phone-eg": "1234567890",
+        "phone-hint": "Please provide phone number!",
+        "confirm-password": "Confirm Password",
+        "confirm-password-hint": "Please confirm your password!",
+        "login-link-1": "Already have password",
+        "login-link-2": "login here!"
+      },
+      "governance": {
+        "name": "Governance"
+      },
+      "organization": {
+        "name": "Organization",
+        "description": "Organization can be created here!",
+        "label": {
+          "organizationCode": "Code"
+        }
+      },
+      "permission": {
+        "name": "Permission",
+        "description": "Permission can be created here!",
+        "label": {
+          "permissionCode": "Code"
+        }
+      },
+      "menu": {
+        "name": "Menu",
+        "description": "Menu can be created here!",
+        "label": {
+          "path": "Path",
+          "icon": "Icon",
+          "iconType": "Icon Type",
+          "iconTheme": "Icon Theme",
+          "rootMenuId": "Root Menu Id",
+          "displayPosition": "Display Position",
+          "menuType": "Menu Type",
+          "moduleId": "Module"
+        }
+      },
+      "role": {
+        "name": "Role",
+        "description": "Role can be created here!",
+        "label": {
+          "selectedOrganizationIds": "Organization",
+          "selectedPermissionIds": "Permission",
+          "menuIds": "Menu Details"
+        }
+      },
+      "user": {
+        "name": "User",
+        "description": "User can be created here!",
+        "label": {
+          "userId": "User Id",
+          "mobileNumber": "Mobile Number",
+          "email": "Email",
+          "selectedRoleIds": "Role"
+        }
+      },
+      "password": {
+        "name": "Password",
+        "description": "Password can be created here!"
+      }
+    },
+    "regxPatterns": {
+      "input": "Upper case, Lower case, Numeric, Underscore, Space",
+      "inputSpecial": "Upper case, Lower case, Numeric, Underscore, Comma, Slash, Hyphen, Dot",
+      "numeric": "Numeric",
+      "password": "Upper case, Lower case, Numeric, @ $ #",
+      "select-one": "Select Options",
+      "email": "Email Address",
+      "phone": "Phone Number"
+    },
+    "message": {
+      "generic": {
+        "error": "Error",
+        "info": "Information",
+        "refer-console": "Refer developer console in the browser for exception details.",
+        "success": "Success",
+        "warning": "Warning"
+      },
+      "success": {
+        "000": "Operation completed successfully."
+      },
+      "failure": {
+        "000": "Problem occurred. Please try again later.",
+        "001": "Field should not be empty.",
+        "002": "Field should not be null.",
+        "003": "Requested Data Not available or Inactive.",
+        "004": "Please input your password!",
+        "005": "Please input your email!",
+        "006": "Field required minimum/maximum length of input.",
+        "007": "Field required minimum/maximum length of input.",
+        "008": "Input contains not allowed symbols.",
+        "009": "Field accept only numeric",
+        "010": "Password should contain at least one upper case",
+        "011": "Password should contain at least one lower case",
+        "012": "Password should contain at least one numeric",
+        "013": "Password should contain at least one special char",
+        "014": "Password should contain alphabets",
+        "015": "Password should contain @ or # or $",
+        "016": "Password / Confirm password not matched",
+        "017": "Please input valid email address",
+        "018": "Please select menu details"
+      }
+    }
+  }
+}
