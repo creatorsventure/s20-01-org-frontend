@@ -3,8 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  uamApiURL: 'http://localhost:8080/api/org-service/',
+    production: false,
+    //  uamApiURL: 'http://localhost:8020/api/org-service/', // Microservice
+    uamApiURL: 'http://localhost:8080/api/org-service/', // API Gateway
+    secret: '5Aje3AoJsUlvY5zvDUm7U1Iqx4c+ehJP5BBqOtV0exE='
 };
 
 /*

@@ -27,7 +27,7 @@
         <div class="col-lg-8 bg-white">
             <div class="container h-100">
                 <div class="row no-gutters h-100 align-items-center">
-                    <div class="col-md-8 col-lg-8 col-xl-8 mx-auto">
+                    <div class="col-md-8 col-lg-8 col-xl-8 mx-auto" *ngIf="isSignup">
                         <h2>{{ 'app.page.login.sign-up' | translate }}</h2>
                         <p class="m-b-30">{{ 'app.page.login.sign-up-page-hint' | translate }}</p>
                         <form nz-form [formGroup]="signUpForm" class="login-form" nzLayout="vertical"
@@ -130,14 +130,14 @@
                                     </td>
                                     <td>
                                         <nz-form-item>
-                                            <nz-form-label nzFor="checkPassword" nzRequired>
+                                            <nz-form-label nzFor="confirmPassword" nzRequired>
                                                 {{ 'app.page.login.confirm-password' | translate }}
                                             </nz-form-label>
                                             <nz-form-control
                                                     nzErrorTip="{{ 'app.page.login.confirm-password-hint' | translate }}">
-                                                <input nz-input type="password" formControlName="checkPassword"
+                                                <input nz-input type="password" formControlName="confirmPassword"
                                                        placeholder="{{ 'app.page.login.confirm-password' | translate }}"
-                                                       id="checkPassword">
+                                                       id="confirmPassword">
                                             </nz-form-control>
                                         </nz-form-item>
                                     </td>
@@ -167,8 +167,23 @@
                             </div>
                         </form>
                     </div>
+                    <div class="col-md-8 col-lg-8 col-xl-8 mx-auto" *ngIf="!isSignup">
+                        <h2>{{ 'app.page.login.user-exists-title' | translate }}</h2>
+                        <p class="m-b-30">{{ 'app.page.login.signup-success-hint' | translate }}</p>
+                        <a (click)="redirectLoginPage()">
+                            {{ 'app.page.login.login-link-2' | translate }}
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<nz-modal [(nzVisible)]="isModelVisible" nzTitle="The first Modal"
+          (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+        <p>Content one</p>
+        <p>Content two</p>
+        <p>Content three</p>
+    </ng-container>
+</nz-modal>

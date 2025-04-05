@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
-import { ThemeConstantService } from '../../services/theme-constant.service';
+import {Component} from '@angular/core';
+import {ThemeConstantService} from '../../services/theme-constant.service';
+import {APP_NAVIGATION} from '../../routes/navigation.constant';
+import {NzModalService} from 'ng-zorro-antd/modal';
+import {TranslateService} from '@ngx-translate/core';
+import {Router} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
     selector: 'app-header',
@@ -7,26 +12,54 @@ import { ThemeConstantService } from '../../services/theme-constant.service';
     standalone: false
 })
 
-export class HeaderComponent{
+export class HeaderComponent {
 
-    searchVisible : boolean = false;
-    quickViewVisible : boolean = false;
-    isFolded : boolean;
-    isExpand : boolean;
+    searchVisible = false;
+    quickViewVisible = false;
+    isFolded: boolean;
+    isExpand: boolean;
 
-    constructor( private themeService: ThemeConstantService) {}
+    constructor(
+        private router: Router,
+        public authService: AuthService,
+        private modal: NzModalService,
+        private translate: TranslateService,
+        private themeService: ThemeConstantService
+    ) {
+    }
+
+    logout(): void {
+        // console.log('authInfo Logout: ', authInfo);
+        this.authService.logout()
+            .subscribe({
+                next: (status: boolean) => {
+                    if (status) {
+                        this.router.navigate([APP_NAVIGATION.authentication]);
+                    }
+                },
+                error: (err) => {
+                    console.log('login error: ', err);
+                    this.modal.error({
+                        nzTitle: this.translate.instant('app.page.login.signup-failure-title'),
+                        nzContent: err.message,
+                    });
+                },
+                complete: () => {
+                },
+            });
+    }
 
     ngOnInit(): void {
         this.themeService.isMenuFoldedChanges.subscribe(isFolded => this.isFolded = isFolded);
         this.themeService.isExpandChanges.subscribe(isExpand => this.isExpand = isExpand);
     }
 
-    toggleFold() {
+    toggleFold(): void {
         this.isFolded = !this.isFolded;
         this.themeService.toggleFold(this.isFolded);
     }
 
-    toggleExpand() {
+    toggleExpand(): void {
         this.isFolded = false;
         this.isExpand = !this.isExpand;
         this.themeService.toggleExpand(this.isExpand);

@@ -1,9 +1,9 @@
 import {SideNavInterface} from '../../interfaces/side-nav.type';
 import {APP_NAVIGATION} from '../../routes/navigation.constant';
 
-export const ROUTES: SideNavInterface[] = [
+export const ROUTESX: SideNavInterface[] = [
     {
-        path: '',
+        path: APP_NAVIGATION.dashboard,
         title: 'Dashboard',
         iconType: 'nzIcon',
         iconTheme: 'outline',

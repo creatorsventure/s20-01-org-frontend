@@ -1,0 +1,104 @@
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
+import {catchError, filter, switchMap, take} from 'rxjs/operators';
+import {StorageService} from '../services/storage.service';
+import {IAuthInfo} from '../../authentication/login-1/auth-info.model';
+import {API_METHOD, APP_NAVIGATION, LOCAL_STORAGE_KEYS} from '../routes/navigation.constant';
+import {AuthService} from '../services/auth.service';
+import {Router} from '@angular/router';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class JwtInterceptor implements HttpInterceptor {
+    private isRefreshing = false;
+    private refreshTokenSubject = new BehaviorSubject<string | null>(null);
+    private authInfo: IAuthInfo;
+
+    constructor(
+        private router: Router,
+        private storage: StorageService,
+        private authService: AuthService,
+    ) {
+        this.authInfo = this.storage.get(LOCAL_STORAGE_KEYS.AUTH_INFO);
+    }
+
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        // Clone and attach the token
+        // console.log('JwtInterceptor.intercept', req);
+        let authReq = req;
+        if (this.authInfo?.token) {
+            authReq = this.addTokenHeader(req, this.authInfo.token);
+        }
+
+        return next.handle(authReq).pipe(
+            catchError(err => {
+                if (
+                    err instanceof HttpErrorResponse && err.status === 401 &&
+                    !req.url.includes(APP_NAVIGATION.authentication + API_METHOD.refreshToken)
+                ) {
+                    return this.handle401Error(authReq, next);
+                }
+                return throwError(() => err);
+            })
+        );
+    }
+
+    private addTokenHeader(request: HttpRequest<any>, token: string): HttpRequest<any> {
+        return request.clone({
+            setHeaders: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+    }
+
+    private handle401Error(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        // console.log('JwtInterceptor.handle401Error', request);
+        if (!this.isRefreshing) {
+            this.isRefreshing = true;
+            this.refreshTokenSubject.next(null);
+
+            if (!this.authInfo.refreshToken) {
+                this.storage.clearStorage();
+                this.logout(); // Force logout if refresh token is missing
+                return throwError(() => new Error('No refresh token'));
+            }
+
+            return this.authService.refreshToken(this.authInfo).pipe(
+                switchMap(response => {
+                    this.isRefreshing = false;
+                    this.authInfo = response;
+                    this.refreshTokenSubject.next(this.authInfo.refreshToken);
+                    return next.handle(this.addTokenHeader(request, this.authInfo.token));
+                }),
+                catchError(err => {
+                    this.isRefreshing = false;
+                    this.logout(); // logout user
+                    return throwError(() => err);
+                })
+            );
+        } else {
+            return this.refreshTokenSubject.pipe(
+                filter(token => token !== null),
+                take(1),
+                switchMap(token => next.handle(this.addTokenHeader(request, token!)))
+            );
+        }
+    }
+
+    private logout(): void {
+        this.authService.logout().subscribe({
+            next: (status: boolean) => {
+                if (status) {
+                    console.log('JwtInterceptor.logout error: ', status);
+                    this.router.navigate([APP_NAVIGATION.authentication]);
+                }
+            },
+            error: (err) => {
+                console.log('JwtInterceptor.logout error: ', err);
+                this.router.navigate([APP_NAVIGATION.authentication]);
+            },
+        });
+    }
+}

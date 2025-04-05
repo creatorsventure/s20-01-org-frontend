@@ -5,6 +5,7 @@ export interface ISignup extends GenericModelType {
     organizationCode: string;
     organizationName: string;
     password: string;
+    confirmPassword: string;
     mobileNumber: string;
     countryCode: string;
     email: string;

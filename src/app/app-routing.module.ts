@@ -11,7 +11,7 @@ import {APP_NAVIGATION} from './shared/routes/navigation.constant';
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: APP_NAVIGATION.login,
+        redirectTo: APP_NAVIGATION.authentication,
         pathMatch: 'full',
     },
     {

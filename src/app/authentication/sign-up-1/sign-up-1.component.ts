@@ -3,6 +3,9 @@ import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} fr
 import {CRUDService} from '../../shared/services/crud.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ISignup} from './signup.model';
+import {NzModalService} from 'ng-zorro-antd/modal';
+import {TranslateService} from '@ngx-translate/core';
+import {API_METHOD, APP_NAVIGATION} from '../../shared/routes/navigation.constant';
 
 
 @Component({
@@ -14,6 +17,8 @@ export class SignUp1Component {
 
     signUpForm: UntypedFormGroup;
     signupObj: ISignup;
+    isSignup = false;
+    isModelVisible = false;
 
     submitForm(): void {
         for (const i in this.signUpForm.controls) {
@@ -25,20 +30,28 @@ export class SignUp1Component {
             this.signupObj.countryCode = '+91';
             console.log(this.signupObj);
             this.crudService
-                .create('sign-up', this.signupObj)
+                .post(APP_NAVIGATION.signup, this.signupObj)
                 .subscribe({
                     error: (err) => {
-                        alert(err.message);
+                        this.modal.error({
+                            nzTitle: this.translate.instant('app.page.login.signup-failure-title'),
+                            nzContent: err.message,
+                        });
                     },
                     complete: () => {
-                        console.log('signup successful');
+                        this.modal.success({
+                            nzTitle: this.translate.instant('app.page.login.signup-success-title'),
+                            nzContent: this.translate.instant('app.page.login.signup-success-hint'),
+                            nzOnOk: () => this.handleOk(),
+                            nzOnCancel: () => this.handleCancel()
+                        });
                     },
                 });
         }
     }
 
     updateConfirmValidator(): void {
-        Promise.resolve().then(() => this.signUpForm.controls.checkPassword.updateValueAndValidity());
+        Promise.resolve().then(() => this.signUpForm.controls.confirmPassword.updateValueAndValidity());
     }
 
     confirmationValidator = (control: UntypedFormControl): { [s: string]: boolean } => {
@@ -50,10 +63,12 @@ export class SignUp1Component {
     };
 
     constructor(
+        private modal: NzModalService,
         public router: Router,
         private route: ActivatedRoute,
         private fb: UntypedFormBuilder,
-        private crudService: CRUDService) {
+        private crudService: CRUDService,
+        private translate: TranslateService) {
     }
 
     ngOnInit(): void {
@@ -65,12 +80,26 @@ export class SignUp1Component {
             email: [null, [Validators.required]],
             mobileNumber: [null, [Validators.required]],
             password: [null, [Validators.required]],
-            checkPassword: [null, [Validators.required, this.confirmationValidator]],
+            confirmPassword: [null, [Validators.required, this.confirmationValidator]],
             status: [true]
+        });
+        this.crudService.getData(APP_NAVIGATION.user + API_METHOD.count).subscribe(count => {
+            if (Number(count) === 0) {
+                this.isSignup = true;
+            }
         });
     }
 
     redirectLoginPage(): void {
-        this.router.navigate(['../'], {relativeTo: this.route, skipLocationChange: true});
+        this.router.navigate(['../'], {relativeTo: this.route, skipLocationChange: false});
+    }
+
+    handleOk(): void {
+        this.isModelVisible = false;
+        this.router.navigate(['../'], {relativeTo: this.route, skipLocationChange: false});
+    }
+
+    handleCancel(): void {
+        this.isModelVisible = false;
     }
 }

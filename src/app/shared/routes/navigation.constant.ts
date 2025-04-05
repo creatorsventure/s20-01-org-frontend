@@ -11,7 +11,8 @@ export const APP_NAVIGATION = {
     },
     error: 'authentication/error-1',
     info: 'authentication/error-2',
-    login: 'authentication',
+    authentication: 'authentication',
+    signup: 'sign-up',
     dashboard: 'dashboard',
     governance: 'governance',
     menu: 'menu',
@@ -23,6 +24,9 @@ export const APP_NAVIGATION = {
 };
 
 export const API_METHOD = {
+    login: '/login',
+    refreshToken: '/refresh-token',
+    logout: '/logout',
     list: '/list',
     create: '/create',
     read: '/read-one',
@@ -31,5 +35,18 @@ export const API_METHOD = {
     changeStatus: '/update-status',
     resendActivationMail: 'resend-activation-mail',
     menuTree: '/menu-tree',
-    idNameMap: '/read-id-name-map'
+    idNameMap: '/read-id-name-map',
+    count: '/count',
+    loadRoleMenu: '/load-role-menu',
+};
+
+export const LOCAL_STORAGE_KEYS = {
+    AUTH_INFO: 'AUTH_INFO'
+};
+
+export const AUTH_SERVICE_REQUEST_TYPE = {
+    LOGIN: 1,
+    LOGOUT: 2,
+    REFRESH_TOKEN: 3,
+    LOAD_ROLE_MENU: 4
 };

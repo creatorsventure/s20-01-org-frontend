@@ -5,7 +5,7 @@
     "description": "This is an User Access Management application. Please manage the users, access etc here.",
     "privacy": "privacy",
     "rights": "All rights reserved",
-    "version": "v 1.0",
+    "version": "V 1.0",
     "year": "2025",
     "general": {
       "button": {
@@ -68,7 +68,7 @@
         "organization-name-hint": "Please input your Organization Name!",
         "organization-code": "Organization Code",
         "organization-code-hint": "Please input your Organization Code!",
-        "username": "Username",
+        "username": "user id",
         "username-hint": "Please input your username!",
         "password": "Password",
         "password-hint": "Please input your Password!",
@@ -76,6 +76,9 @@
         "sign-up": "Signup",
         "sign-up-page-hint": "Create your account to get access",
         "sign-up-hint": "Don't have an account?",
+        "signup-success-title": "Operation completed successfully",
+        "signup-success-hint": "We have sent an email with login details. Please login to continue.",
+        "signup-failure-title": "Operation failed",
         "email": "Email",
         "email-hint": "Please provide email!",
         "phone": "Phone",
@@ -84,7 +87,22 @@
         "confirm-password": "Confirm Password",
         "confirm-password-hint": "Please confirm your password!",
         "login-link-1": "Already have password",
-        "login-link-2": "login here!"
+        "login-link-2": "login here!",
+        "user-exists-title": "User already created!",
+        "user-exists-hint": "User already exists, Please login"
+      },
+      "quick-view": {
+        "title": "Quick View",
+        "sign-out": "logout"
+      },
+      "error": {
+        "title": "!#$",
+        "hint-1": "Whoops! Problem occurred",
+        "hint-2": "Please try again later."
+      },
+      "info": {
+        "title": "Problem occurred. Please try again later!",
+        "hint-1": "Unfortunately the site is down for a bit of maintenance right now. But we're doing our best to get things back."
       },
       "governance": {
         "name": "Governance"

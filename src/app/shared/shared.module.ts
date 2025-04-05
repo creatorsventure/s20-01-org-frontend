@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {provideHttpClient} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
@@ -16,6 +16,7 @@ import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzCardModule} from 'ng-zorro-antd/card';
 import {NzNotificationModule} from 'ng-zorro-antd/notification';
+import {JwtInterceptor} from './interceptor/jwt.interceptor';
 
 const antdModule = [
     NzSpaceModule,
@@ -47,7 +48,15 @@ const antdModule = [
         ...antdModule,
     ],
     declarations: [SearchPipe],
-    providers: [ThemeConstantService, provideHttpClient()],
+    providers: [
+        ThemeConstantService,
+        provideHttpClient(withInterceptorsFromDi()),
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptor,
+            multi: true
+        }
+    ],
 })
 export class SharedModule {
 }

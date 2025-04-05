@@ -31,11 +31,11 @@
                         <form nz-form [formGroup]="loginForm" nzLayout="vertical" class="login-form"
                               (ngSubmit)="submitForm()">
                             <nz-form-item>
-                                <nz-form-label nzRequired nzFor="userName">{{ 'app.page.login.username' | translate }}
+                                <nz-form-label nzRequired nzFor="userId">{{ 'app.page.login.username' | translate }}
                                 </nz-form-label>
                                 <nz-form-control nzErrorTip="{{ 'app.page.login.username-hint' | translate }}">
                                     <nz-input-group [nzPrefix]="prefixUser">
-                                        <input type="text" nz-input formControlName="userName"
+                                        <input type="text" nz-input formControlName="userId"
                                                placeholder="{{ 'app.page.login.username' | translate }}">
                                     </nz-input-group>
                                 </nz-form-control>
@@ -55,7 +55,8 @@
                             <nz-form-item>
                                 <nz-form-control>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <span class="font-size-13 text-muted">{{ 'app.page.login.sign-up-hint' | translate }}
+                                        <span *ngIf="isSignup"
+                                              class="font-size-13 text-muted">{{ 'app.page.login.sign-up-hint' | translate }}
                                             <a class="small"
                                                [routerLink]="['/authentication/sign-up-1']">{{ 'app.page.login.sign-up' | translate }}</a>
                                         </span>

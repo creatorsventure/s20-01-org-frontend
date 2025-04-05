@@ -1,5 +1,6 @@
 import {Routes} from '@angular/router';
 import {APP_NAVIGATION} from './navigation.constant';
+import {AuthGuard} from '../guard/auth.guard';
 
 export const COMMON_LAYOUT_ROUTES: Routes = [
     {
@@ -8,7 +9,7 @@ export const COMMON_LAYOUT_ROUTES: Routes = [
             import('../../dashboard/dashboard.module').then((m) => m.DashboardModule),
         data: {
             headerDisplay: 'none',
-        },
+        }, // canActivate: [AuthGuard]
     },
     {
         path: APP_NAVIGATION.governance + '/' + APP_NAVIGATION.organization,
@@ -18,6 +19,7 @@ export const COMMON_LAYOUT_ROUTES: Routes = [
             parent: APP_NAVIGATION.governance,
             title: 'app.page.' + APP_NAVIGATION.governance + '.name',
         },
+        canActivate: [AuthGuard]
     },
     {
         path: APP_NAVIGATION.governance + '/' + APP_NAVIGATION.permission,
@@ -27,6 +29,7 @@ export const COMMON_LAYOUT_ROUTES: Routes = [
             parent: APP_NAVIGATION.governance,
             title: 'app.page.' + APP_NAVIGATION.governance + '.name',
         },
+        canActivate: [AuthGuard]
     },
     {
         path: APP_NAVIGATION.governance + '/' + APP_NAVIGATION.menu,
@@ -36,6 +39,7 @@ export const COMMON_LAYOUT_ROUTES: Routes = [
             parent: APP_NAVIGATION.governance,
             title: 'app.page.' + APP_NAVIGATION.governance + '.name',
         },
+        canActivate: [AuthGuard]
     },
     {
         path: APP_NAVIGATION.governance + '/' + APP_NAVIGATION.role,
@@ -45,6 +49,7 @@ export const COMMON_LAYOUT_ROUTES: Routes = [
             parent: APP_NAVIGATION.governance,
             title: 'app.page.' + APP_NAVIGATION.governance + '.name',
         },
+        canActivate: [AuthGuard]
     },
     {
         path: APP_NAVIGATION.governance + '/' + APP_NAVIGATION.user,
@@ -54,6 +59,7 @@ export const COMMON_LAYOUT_ROUTES: Routes = [
             parent: APP_NAVIGATION.governance,
             title: 'app.page.' + APP_NAVIGATION.governance + '.name',
         },
+        canActivate: [AuthGuard]
     },
     {
         path: APP_NAVIGATION.governance + '/' + APP_NAVIGATION.password,
@@ -63,5 +69,6 @@ export const COMMON_LAYOUT_ROUTES: Routes = [
             parent: APP_NAVIGATION.governance,
             title: 'app.page.' + APP_NAVIGATION.governance + '.name',
         },
+        canActivate: [AuthGuard]
     },
 ];

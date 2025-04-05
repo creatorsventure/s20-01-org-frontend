@@ -58,7 +58,7 @@ export abstract class OpsAbstract {
                 this.customCreateValidations()
             ) {
                 this.crudService
-                    .create(
+                    .post(
                         this.pageName,
                         finalObject ? finalObject : this.crudForm.value
                     )
@@ -81,7 +81,7 @@ export abstract class OpsAbstract {
                 this.customUpdateValidations()
             ) {
                 this.crudService
-                    .update(
+                    .put(
                         this.pageName,
                         finalObject ? finalObject : this.crudForm.value
                     )

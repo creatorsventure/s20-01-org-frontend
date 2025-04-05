@@ -24,6 +24,8 @@ import {FooterComponent} from './footer/footer.component';
 import {SideNavDirective} from '../directives/side-nav.directive';
 import {ThemeConstantService} from '../services/theme-constant.service';
 import {AlertComponent} from './alert/alert.component';
+import {NzModalModule} from 'ng-zorro-antd/modal';
+import {NzMenuModule} from 'ng-zorro-antd/menu';
 
 const antdModule = [
     NzAvatarModule,
@@ -37,6 +39,8 @@ const antdModule = [
     NzSwitchModule,
     NzInputModule,
     NzButtonModule,
+    NzModalModule,
+    NzMenuModule
 ];
 
 @NgModule({
