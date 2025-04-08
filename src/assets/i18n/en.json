@@ -176,29 +176,41 @@
         "success": "Success",
         "warning": "Warning"
       },
+      "glossary": {
+        "tittle": "This is only to comment and classify the error code. Dont use in application",
+        "000-999": "core and front-end only errors",
+        "1000-1999": "error from the org service"
+      },
       "success": {
         "000": "Operation completed successfully."
       },
       "failure": {
+        "COMMENT-01": "core and front-end only errors - start",
         "000": "Problem occurred. Please try again later.",
-        "001": "Field should not be empty.",
+        "001": "Field should not be blank.",
         "002": "Field should not be null.",
-        "003": "Requested Data Not available or Inactive.",
-        "004": "Please input your password!",
-        "005": "Please input your email!",
-        "006": "Field required minimum/maximum length of input.",
-        "007": "Field required minimum/maximum length of input.",
-        "008": "Input contains not allowed symbols.",
-        "009": "Field accept only numeric",
-        "010": "Password should contain at least one upper case",
-        "011": "Password should contain at least one lower case",
-        "012": "Password should contain at least one numeric",
-        "013": "Password should contain at least one special char",
-        "014": "Password should contain alphabets",
-        "015": "Password should contain @ or # or $",
-        "016": "Password / Confirm password not matched",
-        "017": "Please input valid email address",
-        "018": "Please select menu details"
+        "003": "Field should not be empty.",
+        "004": "Field required minimum/maximum length of input.",
+        "005": "Input is not valid.",
+        "006": "Invalid phone number",
+        "007": "Invalid email address",
+        "008": "Invalid password",
+        "009": "Password not matched.",
+        "010": "Invalid password length.",
+        "011": "Password should have one uppercase",
+        "012": "Password should have one lowercase",
+        "013": "Password should have one number",
+        "014": "Password should have one special character",
+        "015": "Password should not have space",
+        "016": "Requested Data Not available or Inactive.",
+        "017": "User already exists.",
+        "018": "Please select the menu.",
+        "COMMENT-02": "core and front-end only errors - end",
+        "COMMENT-03": "Org service errors - start",
+        "1000": "Invalid credentials.",
+        "1001": "Token/Refresh token expired.",
+        "1002": "Token/Refresh token expired.",
+        "COMMENT-04": "Org service errors - end"
       }
     }
   }

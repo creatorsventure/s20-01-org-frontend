@@ -51,11 +51,14 @@ export class AuthService {
 
     public loadRoleMenu(): Observable<any> {
         const authInfo = this.storage.get(LOCAL_STORAGE_KEYS.AUTH_INFO);
-        return this.post(
-            APP_NAVIGATION.role + API_METHOD.loadRoleMenu,
-            authInfo.roleIds,
-            AUTH_SERVICE_REQUEST_TYPE.LOAD_ROLE_MENU
-        );
+        // console.log('loadRoleMenu: ', authInfo);
+        if (authInfo) {
+            return this.post(
+                APP_NAVIGATION.role + API_METHOD.loadRoleMenu,
+                authInfo.roleIds,
+                AUTH_SERVICE_REQUEST_TYPE.LOAD_ROLE_MENU
+            );
+        }
     }
 
     private post(pageName: string, dto: any, type: number): Observable<any> {

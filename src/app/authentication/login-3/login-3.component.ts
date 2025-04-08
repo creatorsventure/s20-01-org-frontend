@@ -1,5 +1,5 @@
-import { Component } from '@angular/core'
-import { UntypedFormBuilder, UntypedFormGroup,  Validators } from '@angular/forms';
+import {Component} from '@angular/core';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -12,8 +12,8 @@ export class Login3Component {
 
     submitForm(): void {
         for (const i in this.loginForm.controls) {
-            this.loginForm.controls[ i ].markAsDirty();
-            this.loginForm.controls[ i ].updateValueAndValidity();
+            this.loginForm.controls[i].markAsDirty();
+            this.loginForm.controls[i].updateValueAndValidity();
         }
     }
 
@@ -22,8 +22,8 @@ export class Login3Component {
 
     ngOnInit(): void {
         this.loginForm = this.fb.group({
-            userName: [ null, [ Validators.required ] ],
-            password: [ null, [ Validators.required ] ]
+            userName: [null, [Validators.required]],
+            password: [null, [Validators.required]]
         });
     }
 }    

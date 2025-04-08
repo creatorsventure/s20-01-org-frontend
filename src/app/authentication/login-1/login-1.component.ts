@@ -34,7 +34,10 @@ export class Login1Component {
                         });
                     },
                     complete: () => {
-                        this.router.navigate([APP_NAVIGATION.dashboard]);
+                        this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
+                            this.router.navigate([APP_NAVIGATION.dashboard]);
+                        });
+                        // this.router.navigate([APP_NAVIGATION.dashboard]);
                     },
                 });
         }

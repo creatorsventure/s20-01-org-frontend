@@ -3,7 +3,6 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {catchError, filter, switchMap, take} from 'rxjs/operators';
 import {StorageService} from '../services/storage.service';
-import {IAuthInfo} from '../../authentication/login-1/auth-info.model';
 import {API_METHOD, APP_NAVIGATION, LOCAL_STORAGE_KEYS} from '../routes/navigation.constant';
 import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
@@ -14,22 +13,21 @@ import {Router} from '@angular/router';
 export class JwtInterceptor implements HttpInterceptor {
     private isRefreshing = false;
     private refreshTokenSubject = new BehaviorSubject<string | null>(null);
-    private authInfo: IAuthInfo;
 
     constructor(
         private router: Router,
         private storage: StorageService,
         private authService: AuthService,
     ) {
-        this.authInfo = this.storage.get(LOCAL_STORAGE_KEYS.AUTH_INFO);
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // Clone and attach the token
         // console.log('JwtInterceptor.intercept', req);
+        const authInfo = this.storage.get(LOCAL_STORAGE_KEYS.AUTH_INFO);
         let authReq = req;
-        if (this.authInfo?.token) {
-            authReq = this.addTokenHeader(req, this.authInfo.token);
+        if (authInfo?.token) {
+            authReq = this.addTokenHeader(req, authInfo.token);
         }
 
         return next.handle(authReq).pipe(
@@ -55,22 +53,22 @@ export class JwtInterceptor implements HttpInterceptor {
 
     private handle401Error(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // console.log('JwtInterceptor.handle401Error', request);
+        const authInfo = this.storage.get(LOCAL_STORAGE_KEYS.AUTH_INFO);
         if (!this.isRefreshing) {
             this.isRefreshing = true;
             this.refreshTokenSubject.next(null);
 
-            if (!this.authInfo.refreshToken) {
+            if (!authInfo.refreshToken) {
                 this.storage.clearStorage();
                 this.logout(); // Force logout if refresh token is missing
                 return throwError(() => new Error('No refresh token'));
             }
 
-            return this.authService.refreshToken(this.authInfo).pipe(
+            return this.authService.refreshToken(authInfo).pipe(
                 switchMap(response => {
                     this.isRefreshing = false;
-                    this.authInfo = response;
-                    this.refreshTokenSubject.next(this.authInfo.refreshToken);
-                    return next.handle(this.addTokenHeader(request, this.authInfo.token));
+                    this.refreshTokenSubject.next(authInfo.refreshToken);
+                    return next.handle(this.addTokenHeader(request, authInfo.token));
                 }),
                 catchError(err => {
                     this.isRefreshing = false;

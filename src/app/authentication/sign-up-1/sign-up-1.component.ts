@@ -28,7 +28,7 @@ export class SignUp1Component {
         if (this.signUpForm.valid) {
             this.signupObj = this.signUpForm.value;
             this.signupObj.countryCode = '+91';
-            console.log(this.signupObj);
+            // console.log(this.signupObj);
             this.crudService
                 .post(APP_NAVIGATION.signup, this.signupObj)
                 .subscribe({
