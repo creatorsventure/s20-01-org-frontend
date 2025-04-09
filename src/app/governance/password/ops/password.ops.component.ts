@@ -2,10 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {OpsAbstract} from '../../../shared/abstract/ops.abstract';
 import {ActivatedRoute} from '@angular/router';
 import {CRUDService} from '../../../shared/services/crud.service';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, UntypedFormControl} from '@angular/forms';
 import {AppControlService} from '../../../shared/services/app.control.service';
 import {AlertService} from '../../../shared/services/alert.service';
 import {APP_NAVIGATION} from '../../../shared/routes/navigation.constant';
+import {CONTROL_DESCRIPTION} from '../../../shared/constant/control.constant';
 
 @Component({selector: 'app-password-ops', templateUrl: './password.ops.component.html', styles: [], standalone: false})
 export class PasswordOpsComponent extends OpsAbstract implements OnInit {
@@ -23,7 +24,8 @@ export class PasswordOpsComponent extends OpsAbstract implements OnInit {
     ngOnInit(): void {
         super.init();
         this.crudForm = this.fb.group({
-            /* exampleField: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.exampleField) */
+            password: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.password, this.object?.password),
+            confirmPassword: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.password, this.object?.confirmPassword)
         });
     }
 

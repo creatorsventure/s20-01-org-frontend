@@ -156,7 +156,13 @@
       },
       "password": {
         "name": "Password",
-        "description": "Password can be created here!"
+        "description": "Password can be created here!",
+        "label": {
+          "name": "Name",
+          "password": "Password",
+          "confirmPassword": "Confirm password",
+          "userDetailId": "User id"
+        }
       }
     },
     "regxPatterns": {
@@ -188,28 +194,25 @@
         "COMMENT-01": "core and front-end only errors - start",
         "000": "Problem occurred. Please try again later.",
         "001": "Field should not be blank.",
-        "002": "Field should not be null.",
-        "003": "Field should not be empty.",
-        "004": "Field required minimum/maximum length of input.",
-        "005": "Input is not valid.",
-        "006": "Invalid phone number",
-        "007": "Invalid email address",
-        "008": "Invalid password",
-        "009": "Password not matched.",
-        "010": "Invalid password length.",
-        "011": "Password should have one uppercase",
-        "012": "Password should have one lowercase",
-        "013": "Password should have one number",
-        "014": "Password should have one special character",
-        "015": "Password should not have space",
-        "016": "Requested Data Not available or Inactive.",
-        "017": "User already exists.",
-        "018": "Please select the menu.",
+        "002": "Field should not be empty.",
+        "003": "Field required minimum/maximum length of input.",
+        "004": "Input is not valid.",
+        "005": "Invalid phone number",
+        "006": "Invalid email address",
+        "007": "Invalid password",
+        "008": "Password not matched.",
+        "009": "Invalid password length.",
+        "010": "Password should have one uppercase",
+        "011": "Password should have one lowercase",
+        "012": "Password should have one number",
+        "013": "Password should have one special character",
+        "014": "Password should not have space",
+        "015": "Requested Data Not available or Inactive.",
+        "016": "User already exists.",
+        "017": "Invalid credentials.",
+        "018": "Token/Refresh token expired.",
         "COMMENT-02": "core and front-end only errors - end",
         "COMMENT-03": "Org service errors - start",
-        "1000": "Invalid credentials.",
-        "1001": "Token/Refresh token expired.",
-        "1002": "Token/Refresh token expired.",
         "COMMENT-04": "Org service errors - end"
       }
     }
