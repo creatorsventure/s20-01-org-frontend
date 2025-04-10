@@ -20,7 +20,9 @@ export const APP_NAVIGATION = {
     permission: 'permission',
     role: 'role',
     user: 'user',
-    password: 'password'
+    password: 'password',
+    configuration: 'configuration',
+    unit: 'unit'
 };
 
 export const API_METHOD = {

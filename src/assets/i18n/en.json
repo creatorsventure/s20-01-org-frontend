@@ -163,6 +163,16 @@
           "confirmPassword": "Confirm password",
           "userDetailId": "User id"
         }
+      },
+      "configuration": {
+        "name": "Configuration"
+      },
+      "unit": {
+        "name": "Unit",
+        "description": "Unit can be created here!",
+        "label": {
+          "unitCode": "Code"
+        }
       }
     },
     "regxPatterns": {
@@ -211,6 +221,7 @@
         "016": "User already exists.",
         "017": "Invalid credentials.",
         "018": "Token/Refresh token expired.",
+        "019": "New password and Old password are same.",
         "COMMENT-02": "core and front-end only errors - end",
         "COMMENT-03": "Org service errors - start",
         "COMMENT-04": "Org service errors - end"
