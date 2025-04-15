@@ -16,7 +16,7 @@ export class ControlValueAccessorDirective<T> implements ControlValueAccessor, O
     private destroy = new Subject<void>();
     protected onTouched!: () => T;
     protected onChange: (value: any) => void = () => {
-    }
+    };
 
     constructor(@Inject(Injector) private injector: Injector,
                 public appCtrlService: AppControlService) {
@@ -47,9 +47,14 @@ export class ControlValueAccessorDirective<T> implements ControlValueAccessor, O
     }
 
     writeValue(value: T): void {
-        this.control
+        if (!this.control) {
+            this.control = new FormControl(value);
+        } else if (this.control.value !== value) {
+            this.control.setValue(value, {emitEvent: false}); // ✅ Prevent recursion
+        }
+        /* this.control
             ? this.control.setValue(value)
-            : (this.control = new FormControl(value));
+            : (this.control = new FormControl(value));*/
     }
 
     registerOnChange(fn: (val: T | null) => T): void {

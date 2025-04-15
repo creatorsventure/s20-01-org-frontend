@@ -39,6 +39,9 @@ export const API_METHOD = {
     menuTree: '/menu-tree',
     idNameMap: '/read-id-name-map',
     count: '/count',
+    activateAccount: '/activate-account',
+    forgotPassword: '/forgot-password',
+    resetPassword: '/reset-password',
     loadRoleMenu: '/load-role-menu',
 };
 

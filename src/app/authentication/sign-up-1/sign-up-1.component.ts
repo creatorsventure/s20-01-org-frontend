@@ -35,7 +35,7 @@ export class SignUp1Component {
                     error: (err) => {
                         this.modal.error({
                             nzTitle: this.translate.instant('app.page.login.signup-failure-title'),
-                            nzContent: err.message,
+                            nzContent: err?.error?.message ? this.translate.instant(err?.error?.message) : err.message,
                         });
                     },
                     complete: () => {

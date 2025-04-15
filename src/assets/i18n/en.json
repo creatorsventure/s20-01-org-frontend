@@ -91,6 +91,20 @@
         "user-exists-title": "User already created!",
         "user-exists-hint": "User already exists, Please login"
       },
+      "activate-account": {
+        "success": "Account activation success!",
+        "success-hint": "Please login to continue.",
+        "failure": "Account activation failed or taking some time!",
+        "failure-hint": "Please contact support."
+      },
+      "reset-password": {
+        "reset": "Reset",
+        "reset-password": "Reset Password",
+        "reset-password-hint": "Please reset your credentials here.",
+        "reset-hint-1": "Confirm to initiate reset email",
+        "reset-hint-2": "Please click ok to initiate the password reset email.",
+        "success-hint": "Please login to continue."
+      },
       "quick-view": {
         "title": "Quick View",
         "sign-out": "logout"
@@ -222,6 +236,9 @@
         "017": "Invalid credentials.",
         "018": "Token/Refresh token expired.",
         "019": "New password and Old password are same.",
+        "020": "User already activated.",
+        "021": "Emailed link expired.",
+        "022": "Please enter the user id",
         "COMMENT-02": "core and front-end only errors - end",
         "COMMENT-03": "Org service errors - start",
         "COMMENT-04": "Org service errors - end"

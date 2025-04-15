@@ -44,7 +44,7 @@
                                 <nz-form-label nzRequired nzFor="password">{{ 'app.page.login.password' | translate }}
                                 </nz-form-label>
                                 <a class="font-size-13 p-t-10 text-muted" style="position:absolute; right: 0"
-                                   [routerLink]="['/authentication/reset-password-1']">{{ 'app.page.login.forgot-password' | translate }}</a>
+                                   (click)="forgotPassword()">{{ 'app.page.login.forgot-password' | translate }}</a>
                                 <nz-form-control nzErrorTip="{{ 'app.page.login.password-hint' | translate }}">
                                     <nz-input-group [nzPrefix]="prefixLock">
                                         <input type="password" nz-input formControlName="password"

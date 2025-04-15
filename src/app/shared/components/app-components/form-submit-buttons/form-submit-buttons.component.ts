@@ -22,6 +22,9 @@ export class FormSubmitButtonsComponent {
     @Input()
     public parent: string;
 
+    @Input()
+    public backButtonDisplay = true;
+
     public permissions: any = APP_NAVIGATION.permissions;
 
     constructor(public router: Router, private route: ActivatedRoute) {

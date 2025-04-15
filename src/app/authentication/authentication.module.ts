@@ -20,6 +20,8 @@ import {Error1Component} from './error-1/error-1.component';
 import {Error2Component} from './error-2/error-2.component';
 import {NzTableModule} from 'ng-zorro-antd/table';
 import {NzModalModule} from 'ng-zorro-antd/modal';
+import {ActivateAccountComponent} from './activate-account/activate-account.component';
+import {ResetPasswordComponent} from './reset-password/reset-password.component';
 
 const antdModule = [
     NzFormModule,
@@ -47,7 +49,9 @@ const antdModule = [
         SignUp2Component,
         SignUp3Component,
         Error1Component,
-        Error2Component
+        Error2Component,
+        ActivateAccountComponent,
+        ResetPasswordComponent
     ]
 })
 

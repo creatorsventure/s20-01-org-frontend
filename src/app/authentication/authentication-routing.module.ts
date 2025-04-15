@@ -10,6 +10,8 @@ import {SignUp3Component} from './sign-up-3/sign-up-3.component';
 import {Error1Component} from './error-1/error-1.component';
 import {Error2Component} from './error-2/error-2.component';
 import {APP_NAVIGATION} from '../shared/routes/navigation.constant';
+import {ActivateAccountComponent} from './activate-account/activate-account.component';
+import {ResetPasswordComponent} from './reset-password/reset-password.component';
 
 const routes: Routes = [
     {
@@ -67,6 +69,14 @@ const routes: Routes = [
         data: {
             title: 'Error 2',
         },
+    },
+    {
+        path: 'activate-account/:id',
+        component: ActivateAccountComponent,
+    },
+    {
+        path: 'reset-password/:id',
+        component: ResetPasswordComponent,
     },
     {
         path: '**',

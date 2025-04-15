@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators,} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {CRUDService} from '../../shared/services/crud.service';
 import {API_METHOD, APP_NAVIGATION} from '../../shared/routes/navigation.constant';
 import {IAuthInfo} from './auth-info.model';
@@ -18,19 +18,19 @@ export class Login1Component {
     authInfo: IAuthInfo;
 
     submitForm(): void {
-        for (const i in this.loginForm.controls) {
-            this.loginForm.controls[i].markAsDirty();
-            this.loginForm.controls[i].updateValueAndValidity();
-        }
+        Object.keys(this.loginForm.controls).forEach(controlName => {
+            this.loginForm.controls[controlName].markAsDirty();
+            this.loginForm.controls[controlName].updateValueAndValidity();
+        });
         if (this.loginForm.valid) {
             this.authInfo = this.loginForm.value;
             this.authService.login(this.authInfo)
                 .subscribe({
                     error: (err) => {
-                        console.log('login error: ', err);
+                        // console.log('login error: ', err);
                         this.modal.error({
                             nzTitle: this.translate.instant('app.page.login.signup-failure-title'),
-                            nzContent: this.translate.instant(err?.error?.message || ''),
+                            nzContent: err?.error?.message ? this.translate.instant(err?.error?.message) : err.message,
                         });
                     },
                     complete: () => {
@@ -41,6 +41,35 @@ export class Login1Component {
                     },
                 });
         }
+    }
+
+    forgotPassword(): void {
+        const userId: string = this.loginForm.controls.userId.value;
+        if (!userId) {
+            this.modal.error({
+                nzTitle: this.translate.instant('app.page.login.signup-failure-title'),
+                nzContent: this.translate.instant('app.message.failure.022'),
+            });
+        } else {
+            this.modal.warning({
+                nzTitle: this.translate.instant('app.page.reset-password.reset-hint-1'),
+                nzContent: this.translate.instant('app.page.reset-password.reset-hint-2'),
+                nzOnOk: () => this.sendResetEmail(userId)
+            });
+        }
+    }
+
+    sendResetEmail(userId: string): void {
+        this.crudService.getData(APP_NAVIGATION.password + API_METHOD.forgotPassword,
+            [{key: 'userId', value: userId}])
+            .subscribe(status => {
+                if (Boolean(status)) {
+                    this.modal.success({
+                        nzTitle: this.translate.instant('app.page.login.signup-success-title'),
+                        nzContent: this.translate.instant('app.page.login.signup-success-hint'),
+                    });
+                }
+            });
     }
 
     constructor(
