@@ -51,6 +51,16 @@
         <td [nzEllipsis]="true">{{ page.description }}</td>
         <td [nzRight]="true">
             <nz-space>
+                <ng-container *ngIf="resendPasswordMailOption">
+                    <a *nzSpaceItem nz-tooltip
+                       nzTooltipTitle="{{'app.general.button.resend-password-email' | translate}}"
+                       nz-popconfirm nzPopconfirmTitle="{{'app.general.button.resend-password-email' | translate}}"
+                       nzPopconfirmPlacement="bottom" nzOkText="{{'app.general.button.yes' | translate}}"
+                       nzCancelText="{{'app.general.button.no' | translate}}"
+                       (nzOnConfirm)="resendPasswordMail(page.id)">
+                        <i nz-icon nzType="mail" nzTheme="twotone" nzTwotoneColor="#3F87F5"></i>
+                    </a>
+                </ng-container>
                 <a *nzSpaceItem nz-tooltip nzTooltipTitle="{{'app.general.button.view' | translate}}"
                    routerLink="view/{{ page.id }}">
                     <i nz-icon nzType="security-scan" nzTheme="twotone" nzTwotoneColor="#3f87f5"></i>
@@ -66,15 +76,6 @@
                    (nzOnConfirm)="delete(page.id)">
                     <i nz-icon nzType="delete" nzTheme="twotone" nzTwotoneColor="#ff7875"></i>
                 </a>
-                <ng-container *ngIf="resendMailOption">
-                    <a *nzSpaceItem nz-tooltip nzTooltipTitle="{{'app.buttons.resendMail' | translate}}"
-                       nz-popconfirm nzPopconfirmTitle="{{'app.buttons.resendMailPopUp' | translate}}"
-                       nzPopconfirmPlacement="bottom" nzOkText="{{'app.buttons.yes' | translate}}"
-                       nzCancelText="{{'app.buttons.no' | translate}}"
-                       (nzOnConfirm)="resendActivationMail(page.id)">
-                        <i nz-icon nzType="mail" nzTheme="twotone" nzTwotoneColor="#3F87F5"></i>
-                    </a>
-                </ng-container>
             </nz-space>
         </td>
     </tr>

@@ -7,7 +7,7 @@ import {AppControlService} from '../../../shared/services/app.control.service';
 import {AlertService} from '../../../shared/services/alert.service';
 import {CONTROL_DESCRIPTION} from '../../../shared/constant/control.constant';
 import {API_METHOD, APP_NAVIGATION} from '../../../shared/routes/navigation.constant';
-import {constIconThemeOptions, constIconTypeOptions, constMenuTypeOptions} from '../../../shared/constant/uam.constant';
+import {constIconThemeOptions, constIconTypeOptions, constMenuTypeOptions} from '../../../shared/constant/org.constant';
 
 @Component({
     selector: 'app-menu-ops',
@@ -35,11 +35,11 @@ export class MenuOpsComponent extends OpsAbstract implements OnInit {
     ngOnInit(): void {
         super.init();
         this.crudForm = this.fb.group({
-            path: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.path),
+            path: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.inputSpecial, this.object?.path),
             icon: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.icon),
             iconType: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectOne, this.object?.iconType),
             iconTheme: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectOne, this.object?.iconTheme),
-            rootMenuId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.numeric, this.object?.rootMenuId),
+            rootMenuId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.inputSpecial, this.object?.rootMenuId),
             displayPosition: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.numeric, this.object?.displayPosition),
             menuType: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectOne, this.object?.menuType),
             moduleId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectOne, this.object?.moduleId),

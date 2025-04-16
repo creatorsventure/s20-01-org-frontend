@@ -18,7 +18,8 @@
         "delete": "Delete",
         "yes": "Yes",
         "no": "No",
-        "back": "Back"
+        "back": "Back",
+        "resend-password-email": "Resend Password Email"
       },
       "page": {
         "id": "Id",
@@ -215,7 +216,10 @@
         "000": "Operation completed successfully."
       },
       "failure": {
-        "COMMENT-01": "core and front-end only errors - start",
+        "COMMENT-01": "front-end only errors - start",
+        "f001": "Please provide the search inputs",
+        "COMMENT-02": "front-end only errors - start",
+        "COMMENT-03": "core and front-end only errors - start",
         "000": "Problem occurred. Please try again later.",
         "001": "Field should not be blank.",
         "002": "Field should not be empty.",
@@ -228,7 +232,7 @@
         "009": "Invalid password length.",
         "010": "Password should have one uppercase",
         "011": "Password should have one lowercase",
-        "012": "Password should have one number",
+        "012": "Field should have one number",
         "013": "Password should have one special character",
         "014": "Password should not have space",
         "015": "Requested Data Not available or Inactive.",
@@ -239,9 +243,9 @@
         "020": "User already activated.",
         "021": "Emailed link expired.",
         "022": "Please enter the user id",
-        "COMMENT-02": "core and front-end only errors - end",
-        "COMMENT-03": "Org service errors - start",
-        "COMMENT-04": "Org service errors - end"
+        "COMMENT-04": "core and front-end only errors - end",
+        "COMMENT-05": "Org service errors - start",
+        "COMMENT-06": "Org service errors - end"
       }
     }
   }

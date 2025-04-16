@@ -15,7 +15,6 @@ import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzCardModule} from 'ng-zorro-antd/card';
-import {NzNotificationModule} from 'ng-zorro-antd/notification';
 import {JwtInterceptor} from './interceptor/jwt.interceptor';
 
 const antdModule = [
@@ -25,7 +24,6 @@ const antdModule = [
     NzButtonModule,
     NzInputModule,
     NzCardModule,
-    NzNotificationModule
 ];
 
 @NgModule({

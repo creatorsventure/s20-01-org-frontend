@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {IPagination} from '../../../interfaces/Pagination.type';
 import {CRUDService} from '../../../services/crud.service';
 import {NzTableQueryParams} from 'ng-zorro-antd/table';
-import {API_METHOD} from '../../../routes/navigation.constant';
+import {API_METHOD, APP_NAVIGATION} from '../../../routes/navigation.constant';
 import {AlertService} from '../../../services/alert.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class ModuleDatatableComponent implements OnInit {
     paginationDto: IPagination;
 
     @Input()
-    public resendMailOption: boolean;
+    public resendPasswordMailOption: boolean;
 
     ngOnInit(): void {
     }
@@ -69,9 +69,9 @@ export class ModuleDatatableComponent implements OnInit {
         });
     }
 
-    public resendActivationMail(id: number): void {
+    public resendPasswordMail(id: number): void {
         this.service
-            .read(this.pageName + API_METHOD.resendActivationMail, [
+            .read(APP_NAVIGATION.password + API_METHOD.resendPasswordMail, [
                 {key: 'id', value: id},
             ])
             .subscribe({

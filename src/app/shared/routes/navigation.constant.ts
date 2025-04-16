@@ -35,7 +35,7 @@ export const API_METHOD = {
     update: '/update',
     delete: '/delete',
     changeStatus: '/update-status',
-    resendActivationMail: 'resend-activation-mail',
+    resendPasswordMail: '/resend-password-email',
     menuTree: '/menu-tree',
     idNameMap: '/read-id-name-map',
     count: '/count',

@@ -3,13 +3,17 @@ import {filter, Observable, Subject} from 'rxjs';
 import {Alert, AlertType} from '../interfaces/alert.type';
 import {TranslateService} from '@ngx-translate/core';
 import {APIResponseType} from '../interfaces/apt.response.type';
+import {NzNotificationService} from 'ng-zorro-antd/notification';
+import {environment} from '../../../environments/environment';
+import {alertTypeOptions} from '../constant/org.constant';
 
 @Injectable({providedIn: 'root'})
 export class AlertService {
     private subject = new Subject<Alert>();
     private defaultId = 'default-alert';
 
-    constructor(private translate: TranslateService) {
+    constructor(private translate: TranslateService,
+                private notification: NzNotificationService) {
     }
 
     // enable subscribing to alerts observable
@@ -61,46 +65,78 @@ export class AlertService {
     }
 
     success(msg: string, translate: boolean, options?: any): void {
-        this.alert(
-            new Alert({
-                ...options,
-                type: AlertType.Success,
-                header: this.translate.instant('app.message.generic.success'),
-                message: translate ? this.translate.instant(msg) : msg,
-            })
-        );
+        if (environment.alertType === alertTypeOptions.notification) {
+            this.notification.create(
+                AlertType.Success,
+                this.translate.instant('app.message.generic.success'),
+                translate ? this.translate.instant(msg) : msg
+            );
+        } else {
+            this.alert(
+                new Alert({
+                    ...options,
+                    type: AlertType.Success,
+                    header: this.translate.instant('app.message.generic.success'),
+                    message: translate ? this.translate.instant(msg) : msg,
+                })
+            );
+        }
     }
 
     error(msg: string, translate: boolean, options?: any): void {
-        this.alert(
-            new Alert({
-                ...options,
-                type: AlertType.Error,
-                header: this.translate.instant('app.message.generic.error'),
-                message: translate ? this.translate.instant(msg) : msg,
-            })
-        );
+        if (environment.alertType === alertTypeOptions.notification) {
+            this.notification.create(
+                AlertType.Error,
+                this.translate.instant('app.message.generic.error'),
+                translate ? this.translate.instant(msg) : msg
+            );
+        } else {
+            this.alert(
+                new Alert({
+                    ...options,
+                    type: AlertType.Error,
+                    header: this.translate.instant('app.message.generic.error'),
+                    message: translate ? this.translate.instant(msg) : msg,
+                })
+            );
+        }
     }
 
     info(msg: string, translate: boolean, options?: any): void {
-        this.alert(
-            new Alert({
-                ...options,
-                type: AlertType.Info,
-                header: this.translate.instant('app.message.generic.info'),
-                message: translate ? this.translate.instant(msg) : msg,
-            })
-        );
+        if (environment.alertType === alertTypeOptions.notification) {
+            this.notification.create(
+                AlertType.Info,
+                this.translate.instant('app.message.generic.info'),
+                translate ? this.translate.instant(msg) : msg
+            );
+        } else {
+            this.alert(
+                new Alert({
+                    ...options,
+                    type: AlertType.Info,
+                    header: this.translate.instant('app.message.generic.info'),
+                    message: translate ? this.translate.instant(msg) : msg,
+                })
+            );
+        }
     }
 
     warn(msg: string, translate: boolean, options?: any): void {
-        this.alert(
-            new Alert({
-                ...options,
-                type: AlertType.Warning,
-                header: this.translate.instant('app.message.generic.warning'),
-                message: translate ? this.translate.instant(msg) : msg,
-            })
-        );
+        if (environment.alertType === alertTypeOptions.notification) {
+            this.notification.create(
+                AlertType.Warning,
+                this.translate.instant('app.message.generic.warning'),
+                translate ? this.translate.instant(msg) : msg
+            );
+        } else {
+            this.alert(
+                new Alert({
+                    ...options,
+                    type: AlertType.Warning,
+                    header: this.translate.instant('app.message.generic.warning'),
+                    message: translate ? this.translate.instant(msg) : msg,
+                })
+            );
+        }
     }
 }

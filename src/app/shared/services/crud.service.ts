@@ -13,7 +13,7 @@ export class CRUDService {
     private endPoint: string;
 
     constructor(private http: HttpClient, private router: Router) {
-        this.endPoint = environment.uamApiURL;
+        this.endPoint = environment.orgServiceApiURL;
     }
 
     public post(pageName: string, dto: any, isReturnData: boolean = false): Observable<boolean> {
