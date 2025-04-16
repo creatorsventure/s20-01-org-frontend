@@ -243,6 +243,7 @@
         "020": "User already activated.",
         "021": "Emailed link expired.",
         "022": "Please enter the user id",
+        "023": "DB error occurred, Possible duplicate. Check the logs. ",
         "COMMENT-04": "core and front-end only errors - end",
         "COMMENT-05": "Org service errors - start",
         "COMMENT-06": "Org service errors - end"
