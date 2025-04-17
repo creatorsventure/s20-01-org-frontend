@@ -1,10 +1,10 @@
-<nz-form-item *ngIf="control">
-    <nz-form-label class="opsFieldsPadding" *ngIf="!isHideLabel" [nzRequired]="isRequired">
+<nz-form-item *ngIf="control" class="form-field-row">
+    <nz-form-label class="form-field-label" *ngIf="!isHideLabel" [nzRequired]="isRequired">
         {{ appCtrlService.getControlText(pageName, controlName) }}
     </nz-form-label>
 
     <nz-form-control
-            class="opsFieldsPadding"
+            class="form-field-control"
             *ngIf="crudOps !== permissions.view"
             [nzValidateStatus]="control"
             [nzHasFeedback]="control?.invalid && control?.dirty"
@@ -48,7 +48,7 @@
         <app-field-errors [control]="control" [controlName]="controlName"></app-field-errors>
     </ng-template>
 
-    <nz-form-control *ngIf="crudOps === permissions.view" class="opsFieldsPadding">
+    <nz-form-control *ngIf="crudOps === permissions.view" class="form-field-control">
         <span>{{ selectedCountry?.dialCode }}{{ phoneInput }}</span>
     </nz-form-control>
 </nz-form-item>

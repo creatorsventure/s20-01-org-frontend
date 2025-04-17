@@ -42,7 +42,7 @@ export class MenuOpsComponent extends OpsAbstract implements OnInit {
             rootMenuId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.inputSpecial, this.object?.rootMenuId),
             displayPosition: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.numeric, this.object?.displayPosition),
             menuType: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectOne, this.object?.menuType),
-            moduleId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectOne, this.object?.moduleId),
+            // moduleId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectOne, this.object?.moduleId),
         });
         this.crudService.getData(APP_NAVIGATION.organization + API_METHOD.idNameMap).subscribe(idNameMap => {
             this.moduleIdNameMap = idNameMap;

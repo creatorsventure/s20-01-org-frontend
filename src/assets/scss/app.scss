@@ -109,6 +109,49 @@
 
 @import "./demo/demo";
 
+.form-field-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.form-field-label {
+  width: 135px;
+  text-align: left;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.form-field-control {
+  flex: 1; // fill remaining space
+}
+
+.required-star {
+  color: red;
+  margin-right: 4px;
+}
+
+
+/* Make nz-select look identical to ant-input */
+.ant-select:not(.ant-select-disabled) .ant-select-selector {
+  border: 1px solid #edf2f9 !important;
+  border-radius: 0.25rem !important;
+  background-color: #fff;
+  box-shadow: none !important;
+  height: auto;
+  color: #53535f;
+  line-height: 1.5;
+}
+
+/* Match focus style (if any) */
+.ant-select-focused .ant-select-selector {
+  border-color: #40a9ff !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2) !important;
+}
+
+
 #searchSelect nz-select-top-control {
   height: 32px;
   min-width: 150px;

@@ -24,7 +24,7 @@
               }
             },
             "outputPath": {
-              "base": "dist/cvfrontend"
+              "base": "dist/org-frontend"
             },
             "index": "src/index.html",
             "polyfills": [

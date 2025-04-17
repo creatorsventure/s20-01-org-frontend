@@ -7,8 +7,8 @@
                             [pageName]="pageName" [crudOps]="crudOps" formControlName="path"/>
         </div>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
-            <app-form-numeric controlName="rootMenuId" [controlDesc]="controlDesc.inputSpecial"
-                              [pageName]="pageName" [crudOps]="crudOps" formControlName="rootMenuId"/>
+            <app-form-input controlName="rootMenuId" [controlDesc]="controlDesc.inputSpecial"
+                            [pageName]="pageName" [crudOps]="crudOps" formControlName="rootMenuId"/>
         </div>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
             <app-form-numeric controlName="displayPosition" [controlDesc]="controlDesc.numeric"
@@ -32,11 +32,13 @@
         </div>
     </div>
     <div nz-row>
-        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+        <!--
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="12" [nzXXl]="12">
             <app-form-select-one formControlName="moduleId" controlName="moduleId"
                                  [controlOptions]="moduleIdNameMap"
                                  [pageName]="pageName" [crudOps]="crudOps"/>
         </div>
+        -->
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
             <app-form-select-one formControlName="menuType" controlName="menuType"
                                  [controlOptions]="menuTypeOptions"
