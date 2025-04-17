@@ -72,6 +72,7 @@ export class AuthService {
                     ) {
                         if (apiResponse.object && type === AUTH_SERVICE_REQUEST_TYPE.LOGIN) {
                             this.storage.clearStorage();
+                            // this.storage.storePlain('user', apiResponse.object.userId);
                             this.storage.store(LOCAL_STORAGE_KEYS.AUTH_INFO,
                                 apiResponse.object);
                             return true;
