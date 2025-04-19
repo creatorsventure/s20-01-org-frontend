@@ -73,6 +73,7 @@ export class RoleOpsComponent extends OpsAbstract implements OnInit {
                 && this.object?.selectedMenuIds?.length) {
                 const idSet = new Set(this.object.selectedMenuIds);
                 this.checkedKeys = this.object?.selectedMenuIds;
+                this.selectedMenuIds = [...this.object.selectedMenuIds];
                 for (const node of tree) {
                     node.checked = idSet.has(node.key);
                 }
