@@ -23,7 +23,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 
 registerLocaleData(en);
 
-export function createTranslateLoader(http: HttpBackend) {
+export function createTranslateLoader(http: HttpBackend): any {
     const rawHttpClient = new HttpClient(http); // 🚫 skips interceptors
     return new TranslateHttpLoader(rawHttpClient, './assets/i18n/', '.json');
 }
