@@ -72,6 +72,66 @@ export const COMMON_LAYOUT_ROUTES: Routes = [
         canActivate: [AuthGuard]
     },
     {
+        path: APP_NAVIGATION.configuration + '/' + APP_NAVIGATION.scheme,
+        loadChildren: () =>
+            import('../../configuration/scheme/scheme.module').then((m) => m.SchemeModule),
+        data: {
+            parent: APP_NAVIGATION.configuration,
+            title: 'app.page.' + APP_NAVIGATION.configuration + '.name',
+        },
+        canActivate: [AuthGuard]
+    },
+    {
+        path: APP_NAVIGATION.configuration + '/' + APP_NAVIGATION.merchantCategory,
+        loadChildren: () =>
+            import('../../configuration/merchant-category/merchantCategory.module').then((m) => m.MerchantCategoryModule),
+        data: {
+            parent: APP_NAVIGATION.configuration,
+            title: 'app.page.' + APP_NAVIGATION.configuration + '.name',
+        },
+        canActivate: [AuthGuard]
+    },
+    {
+        path: APP_NAVIGATION.configuration + '/' + APP_NAVIGATION.engine,
+        loadChildren: () =>
+            import('../../configuration/engine/engine.module').then((m) => m.EngineModule),
+        data: {
+            parent: APP_NAVIGATION.configuration,
+            title: 'app.page.' + APP_NAVIGATION.configuration + '.name',
+        },
+        canActivate: [AuthGuard]
+    },
+    {
+        path: APP_NAVIGATION.configuration + '/' + APP_NAVIGATION.option,
+        loadChildren: () =>
+            import('../../configuration/option/option.module').then((m) => m.OptionModule),
+        data: {
+            parent: APP_NAVIGATION.configuration,
+            title: 'app.page.' + APP_NAVIGATION.configuration + '.name',
+        },
+        canActivate: [AuthGuard]
+    },
+    {
+        path: APP_NAVIGATION.configuration + '/' + APP_NAVIGATION.currency,
+        loadChildren: () =>
+            import('../../configuration/currency/currency.module').then((m) => m.CurrencyModule),
+        data: {
+            parent: APP_NAVIGATION.configuration,
+            title: 'app.page.' + APP_NAVIGATION.configuration + '.name',
+        },
+        canActivate: [AuthGuard]
+    },
+    {
+        path: APP_NAVIGATION.configuration + '/' + APP_NAVIGATION.action,
+        loadChildren: () =>
+            import('../../configuration/action/action.module').then((m) => m.ActionModule),
+        data: {
+            parent: APP_NAVIGATION.configuration,
+            title: 'app.page.' + APP_NAVIGATION.configuration + '.name',
+        },
+        canActivate: [AuthGuard]
+    },
+    {
         path: APP_NAVIGATION.configuration + '/' + APP_NAVIGATION.unit,
         loadChildren: () =>
             import('../../configuration/unit/unit.module').then((m) => m.UnitModule),

@@ -51,4 +51,10 @@ export const CONTROL_DESCRIPTION = {
     selectMany: {
         type: CONTROL_TYPE.SELECT_MANY
     },
+    currency: {
+        type: CONTROL_TYPE.CURRENCY
+    },
+    switch: {
+        type: CONTROL_TYPE.SWITCH
+    },
 };

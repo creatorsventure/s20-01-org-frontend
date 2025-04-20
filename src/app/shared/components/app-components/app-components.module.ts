@@ -32,6 +32,9 @@ import {FormEmailComponent} from './form-email/form.email.component';
 import {FormPasswordComponent} from './form-password/form.password.component';
 import {FormSelectManyComponent} from './form-select-many/form.selectmany.component';
 import {FormPhoneComponent} from './form-phone/form.phone.component';
+import {FormCurrencyComponent} from './form-currency/form.currency.component';
+import {FormSwitchComponent} from './form-switch/form.switch.component';
+import {NzSwitchModule} from 'ng-zorro-antd/switch';
 
 const antdModule = [
     NzFormModule,
@@ -48,7 +51,8 @@ const antdModule = [
     NzPopconfirmModule,
     NzTagModule,
     NzEmptyModule,
-    NzBadgeModule
+    NzBadgeModule,
+    NzSwitchModule
 ];
 
 @NgModule({
@@ -66,6 +70,8 @@ const antdModule = [
         FieldErrorsComponent,
         FormSubmitButtonsComponent,
         FormAuditComponent,
+        FormCurrencyComponent,
+        FormSwitchComponent
     ],
     imports: [
         CommonModule,
@@ -89,7 +95,9 @@ const antdModule = [
         FormGeneralComponent,
         FormSubmitButtonsComponent,
         FormAuditComponent,
-        FieldErrorsComponent
+        FieldErrorsComponent,
+        FormCurrencyComponent,
+        FormSwitchComponent
     ],
 })
 export class AppComponentsModule {

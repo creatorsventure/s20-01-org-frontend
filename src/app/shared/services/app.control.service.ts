@@ -42,14 +42,17 @@ export class AppControlService {
         controlName: string,
         generalFields: boolean = false
     ): string {
-        return this.translate.instant(control.tooltip, {
-            controlName: generalFields
-                ? this.getGeneralControlText(controlName)
-                : this.getControlText(pageName, controlName),
-            minLength: control.minLength ? control.minLength : 0,
-            maxLength: control.minLength ? control.maxLength : 0,
-            pattern: control.patternKey ? this.translate.instant(control.patternKey) : ''
-        });
+        if (control?.tooltip) {
+            return this.translate.instant(control.tooltip, {
+                controlName: generalFields
+                    ? this.getGeneralControlText(controlName)
+                    : this.getControlText(pageName, controlName),
+                minLength: control.minLength ? control.minLength : 0,
+                maxLength: control.minLength ? control.maxLength : 0,
+                pattern: control.patternKey ? this.translate.instant(control.patternKey) : ''
+            });
+        }
+        return '';
     }
 
     public getControlText(pageName: string, controlName: string): string {

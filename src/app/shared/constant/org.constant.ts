@@ -16,4 +16,9 @@ export const alertTypeOptions = {
     notification: 2
 };
 
+export const engineTypeOptions: Map<number, string> = new Map([
+    [0, 'Service'],
+    [1, 'Switch']
+]);
+
 

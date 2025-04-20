@@ -1,0 +1,34 @@
+<form nz-form [formGroup]="crudForm" (ngSubmit)="createOrUpdate()">
+    <app-form-general [parentForm]="crudForm" [pageName]="pageName" [crudOps]="crudOps"
+                      [object]="object"></app-form-general>
+    <div nz-row>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="captcha"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="captcha"/>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="otpAuthentication"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="otpAuthentication"/>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="tokenization"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="tokenization"/>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="cvvSecurity"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="cvvSecurity"/>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="makerCheckerMode"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="makerCheckerMode"/>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="masking"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="masking"/>
+        </div>
+    </div>
+    <app-form-audit [object]="object" [crudOps]="crudOps"></app-form-audit>
+    <app-form-submit-buttons [crudOps]="crudOps" [crudForm]="crudForm"></app-form-submit-buttons>
+</form>

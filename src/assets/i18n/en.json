@@ -119,6 +119,9 @@
         "title": "Problem occurred. Please try again later!",
         "hint-1": "Unfortunately the site is down for a bit of maintenance right now. But we're doing our best to get things back."
       },
+      "dashboard": {
+        "name": "Dashboard"
+      },
       "governance": {
         "name": "Governance"
       },
@@ -181,6 +184,61 @@
       },
       "configuration": {
         "name": "Configuration"
+      },
+      "scheme": {
+        "name": "Scheme",
+        "description": "Scheme can be created here!",
+        "label": {
+          "code": "Code"
+        }
+      },
+      "merchant-category": {
+        "name": "Merchant Category",
+        "description": "Merchant category can be created here!",
+        "label": {
+          "code": "Code"
+        }
+      },
+      "engine": {
+        "name": "Engine",
+        "description": "Engine can be created here!",
+        "label": {
+          "type": "Type",
+          "serviceURL": "URL",
+          "timeout": "Timeout",
+          "priority": "Priority"
+        }
+      },
+      "option": {
+        "name": "Option",
+        "description": "Option can be created here!",
+        "label": {
+          "captcha": "Captcha",
+          "otpAuthentication": "OTP",
+          "tokenization": "Tokenization",
+          "cvvSecurity": "CVV",
+          "makerCheckerMode": "Maker/Checker",
+          "masking": "Masking"
+        }
+      },
+      "currency": {
+        "name": "Currency",
+        "description": "Currency can be created here!",
+        "label": {
+          "code": "Code",
+          "symbol": "Symbol",
+          "decimalPlaces": "Decimals"
+        }
+      },
+      "action": {
+        "name": "Action",
+        "description": "Action can be created here!",
+        "label": {
+          "actionCode": "Code",
+          "actionId": "Identifier",
+          "partial": "Partial",
+          "permitExcess": "Excess amount"
+        }
       },
       "unit": {
         "name": "Unit",
