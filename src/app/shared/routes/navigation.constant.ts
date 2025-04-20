@@ -22,6 +22,12 @@ export const APP_NAVIGATION = {
     user: 'user',
     password: 'password',
     configuration: 'configuration',
+    scheme: 'scheme',
+    action: 'action',
+    currency: 'currency',
+    engine: 'engine',
+    option: 'option',
+    merchantCategory: 'merchant-category',
     unit: 'unit'
 };
 
