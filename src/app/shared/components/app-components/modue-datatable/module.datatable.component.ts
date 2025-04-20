@@ -24,6 +24,15 @@ export class ModuleDatatableComponent implements OnInit {
     paginationDto: IPagination;
 
     @Input()
+    public viewButtonDisplay = true;
+
+    @Input()
+    public editButtonDisplay = true;
+
+    @Input()
+    public deleteButtonDisplay = true;
+
+    @Input()
     public resendPasswordMailOption: boolean;
 
     ngOnInit(): void {
