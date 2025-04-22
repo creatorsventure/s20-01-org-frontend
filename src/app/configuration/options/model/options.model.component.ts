@@ -1,6 +1,6 @@
 import {GenericModelType} from '../../../shared/interfaces/Generic.model.type';
 
-export interface IOption extends GenericModelType {
+export interface IOptions extends GenericModelType {
     captcha: boolean;
     otpAuthentication: boolean;
     tokenization: boolean;

@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CryptoService} from './crypto.service';
+import {LOCAL_STORAGE_KEYS} from '../routes/navigation.constant';
+import {IAuthInfo} from '../../authentication/login-1/auth-info.model';
 
 @Injectable({providedIn: 'root'})
 export class StorageService {
@@ -14,6 +16,13 @@ export class StorageService {
     public store(key: string, data: string): void {
         this.storage.setItem(key.toUpperCase(),
             this.cryptoService.encrypt(JSON.stringify(data)));
+    }
+
+    public storeAuthInfo(authInfo: IAuthInfo): void {
+        this.storage.setItem(LOCAL_STORAGE_KEYS.AUTH_INFO,
+            this.cryptoService.encrypt(JSON.stringify(authInfo)));
+        this.storage.setItem(LOCAL_STORAGE_KEYS.USER_NAME,
+            this.cryptoService.encrypt(JSON.stringify(authInfo.name)));
     }
 
     public storePlain(key: string, data: string): void {

@@ -32,9 +32,9 @@ export class FormSwitchComponent<T> extends ControlValueAccessorDirective<T> {
     controlDesc: Control;
 
     ngAfterViewInit(): void {
-            // Set default false if value is null or undefined
-            if (this.control && (this.control.value === null || this.control.value === undefined) && this.control.pristine) {
-                this.control.setValue(false, { emitEvent: false });
-            }
+        if (this.control && (this.control.value === null || this.control.value === undefined) && this.control.pristine) {
+            this.control.setValue(false, {emitEvent: false});
         }
+    }
+
 }

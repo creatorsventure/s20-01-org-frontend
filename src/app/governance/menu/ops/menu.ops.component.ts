@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {OpsAbstract} from '../../../shared/abstract/ops.abstract';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CRUDService} from '../../../shared/services/crud.service';
 import {FormBuilder} from '@angular/forms';
 import {AppControlService} from '../../../shared/services/app.control.service';
@@ -16,7 +16,6 @@ import {constIconThemeOptions, constIconTypeOptions, constMenuTypeOptions} from 
 })
 export class MenuOpsComponent extends OpsAbstract implements OnInit {
 
-    public permissions: any = APP_NAVIGATION.permissions;
     public iconTypeOptions: Map<string, string> = constIconTypeOptions;
     public iconThemeOptions: Map<string, string> = constIconThemeOptions;
     public menuTypeOptions: Map<number, string> = constMenuTypeOptions;
@@ -28,8 +27,9 @@ export class MenuOpsComponent extends OpsAbstract implements OnInit {
         public override crudService: CRUDService,
         public override appCtrlService: AppControlService,
         public override alertService: AlertService,
+        public override router: Router
     ) {
-        super(fb, activatedRoute, crudService, appCtrlService, alertService);
+        super(fb, activatedRoute, crudService, appCtrlService, alertService, router);
     }
 
     ngOnInit(): void {
@@ -42,6 +42,7 @@ export class MenuOpsComponent extends OpsAbstract implements OnInit {
             rootMenuId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.inputSpecial, this.object?.rootMenuId),
             displayPosition: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.numeric, this.object?.displayPosition),
             menuType: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectOne, this.object?.menuType),
+            dashboardCountCard: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.switch, this.object?.dashboardCountCard),
             // moduleId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectOne, this.object?.moduleId),
         });
         this.crudService.getData(APP_NAVIGATION.organization + API_METHOD.idNameMap).subscribe(idNameMap => {

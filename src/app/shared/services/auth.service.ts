@@ -73,16 +73,14 @@ export class AuthService {
                         if (apiResponse.object && type === AUTH_SERVICE_REQUEST_TYPE.LOGIN) {
                             this.storage.clearStorage();
                             // this.storage.storePlain('user', apiResponse.object.userId);
-                            this.storage.store(LOCAL_STORAGE_KEYS.AUTH_INFO,
-                                apiResponse.object);
+                            this.storage.storeAuthInfo(apiResponse.object);
                             return true;
                         } else if (apiResponse.object && type === AUTH_SERVICE_REQUEST_TYPE.LOGOUT) {
                             this.storage.clearStorage();
                             return Boolean(apiResponse.object);
                         } else if (apiResponse.object && type === AUTH_SERVICE_REQUEST_TYPE.REFRESH_TOKEN) {
                             this.storage.clearStorage();
-                            this.storage.store(LOCAL_STORAGE_KEYS.AUTH_INFO,
-                                apiResponse.object);
+                            this.storage.storeAuthInfo(apiResponse.object);
                             return apiResponse.object;
                         } else if (apiResponse.object && type === AUTH_SERVICE_REQUEST_TYPE.LOAD_ROLE_MENU) {
                             return apiResponse.object;

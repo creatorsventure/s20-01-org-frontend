@@ -8,7 +8,8 @@ export enum CONTROL_TYPE {
     SELECT_MANY = 7,
     PHONE = 8,
     CURRENCY = 9,
-    SWITCH = 10
+    SWITCH = 10,
+    URL = 11
 }
 
 export class Control {

@@ -151,6 +151,14 @@
   box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2) !important;
 }
 
+.user-avatar {
+  font-size: 36px; // ✅ Makes the initials text bigger
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 #searchSelect nz-select-top-control {
   height: 32px;

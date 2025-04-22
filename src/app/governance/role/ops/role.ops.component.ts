@@ -13,7 +13,6 @@ import {updateFormDirtyAndValueAndValidity} from '../../../shared/utils/utils';
 
 @Component({selector: 'app-role-ops', templateUrl: './role.ops.component.html', styles: [], standalone: false})
 export class RoleOpsComponent extends OpsAbstract implements OnInit {
-    public permissions: any = APP_NAVIGATION.permissions;
     public organizationIdNameMap: Map<string, string>;
     public permissionIdNameMap: Map<string, string>;
 
@@ -26,9 +25,10 @@ export class RoleOpsComponent extends OpsAbstract implements OnInit {
         public override activatedRoute: ActivatedRoute,
         public override crudService: CRUDService,
         public override appCtrlService: AppControlService,
-        public override alertService: AlertService
+        public override alertService: AlertService,
+        public override router: Router
     ) {
-        super(fb, activatedRoute, crudService, appCtrlService, alertService);
+        super(fb, activatedRoute, crudService, appCtrlService, alertService, router);
     }
 
     ngOnInit(): void {
@@ -52,7 +52,7 @@ export class RoleOpsComponent extends OpsAbstract implements OnInit {
         updateFormDirtyAndValueAndValidity(this.crudForm);
         if (this.crudForm.valid) {
             if (this.selectedMenuIds === undefined || this.selectedMenuIds.length === 0) {
-                this.alertService.error('app.message.failure.018', true);
+                this.alertService.error('app.message.failure.f002', true);
             } else {
                 const role: IRole = this.crudForm.value;
                 role.selectedMenuIds = this.selectedMenuIds;
@@ -73,7 +73,7 @@ export class RoleOpsComponent extends OpsAbstract implements OnInit {
                 && this.object?.selectedMenuIds?.length) {
                 const idSet = new Set(this.object.selectedMenuIds);
                 this.checkedKeys = this.object?.selectedMenuIds;
-                this.selectedMenuIds = [...this.object.selectedMenuIds];
+                this.selectedMenuIds = this.object?.selectedMenuIds;
                 for (const node of tree) {
                     node.checked = idSet.has(node.key);
                 }

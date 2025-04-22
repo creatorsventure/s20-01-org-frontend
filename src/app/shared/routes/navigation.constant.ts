@@ -26,7 +26,7 @@ export const APP_NAVIGATION = {
     action: 'action',
     currency: 'currency',
     engine: 'engine',
-    option: 'option',
+    options: 'options',
     merchantCategory: 'merchant-category',
     unit: 'unit'
 };
@@ -52,7 +52,8 @@ export const API_METHOD = {
 };
 
 export const LOCAL_STORAGE_KEYS = {
-    AUTH_INFO: 'AUTH_INFO'
+    AUTH_INFO: 'AUTH_INFO',
+    USER_NAME: 'USER_NAME',
 };
 
 export const AUTH_SERVICE_REQUEST_TYPE = {

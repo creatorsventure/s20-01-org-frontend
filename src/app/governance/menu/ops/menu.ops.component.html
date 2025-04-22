@@ -44,6 +44,10 @@
                                  [controlOptions]="menuTypeOptions"
                                  [pageName]="pageName" [crudOps]="crudOps"/>
         </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="dashboardCountCard"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="dashboardCountCard"/>
+        </div>
     </div>
 
     <app-form-audit [object]="object" [crudOps]="crudOps"></app-form-audit>
