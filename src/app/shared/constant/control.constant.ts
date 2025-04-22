@@ -13,7 +13,7 @@ export const CONTROL_DESCRIPTION = {
         type: CONTROL_TYPE.INPUT_SPECIAL,
         minLength: 3,
         maxLength: 250,
-        pattern: '^[a-zA-Z0-9_, ./-:]*$',
+        pattern: '^[a-zA-Z0-9_, ./-]*$',
         patternKey: 'app.regxPatterns.inputSpecial',
         tooltip: 'app.general.tooltip.general'
     },
