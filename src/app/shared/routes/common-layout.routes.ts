@@ -102,9 +102,9 @@ export const COMMON_LAYOUT_ROUTES: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: APP_NAVIGATION.configuration + '/' + APP_NAVIGATION.option,
+        path: APP_NAVIGATION.configuration + '/' + APP_NAVIGATION.options,
         loadChildren: () =>
-            import('../../configuration/option/option.module').then((m) => m.OptionModule),
+            import('../../configuration/options/options.module').then((m) => m.OptionsModule),
         data: {
             parent: APP_NAVIGATION.configuration,
             title: 'app.page.' + APP_NAVIGATION.configuration + '.name',

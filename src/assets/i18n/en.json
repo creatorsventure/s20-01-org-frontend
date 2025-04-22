@@ -120,7 +120,12 @@
         "hint-1": "Unfortunately the site is down for a bit of maintenance right now. But we're doing our best to get things back."
       },
       "dashboard": {
-        "name": "Dashboard"
+        "name": "Dashboard",
+        "hint-1": "Welcome back, ",
+        "hint-2": "You're all set! Here's some info.",
+        "date": "Today:",
+        "time": "Time:",
+        "status": "Status: Ok"
       },
       "governance": {
         "name": "Governance"
@@ -150,7 +155,8 @@
           "rootMenuId": "Root Menu Id",
           "displayPosition": "Display Position",
           "menuType": "Menu Type",
-          "moduleId": "Module"
+          "moduleId": "Module",
+          "dashboardCountCard": "Count Card"
         }
       },
       "role": {
@@ -209,9 +215,9 @@
           "priority": "Priority"
         }
       },
-      "option": {
-        "name": "Option",
-        "description": "Option can be created here!",
+      "options": {
+        "name": "Options",
+        "description": "Options can be created here!",
         "label": {
           "captcha": "Captcha",
           "otpAuthentication": "OTP",
@@ -244,7 +250,16 @@
         "name": "Unit",
         "description": "Unit can be created here!",
         "label": {
-          "unitCode": "Code"
+          "unitCode": "Code",
+          "unitId": "Id",
+          "legalName": "Legal Name",
+          "address": "Address",
+          "bankIdentificationCode": "BIC",
+          "type": "Type",
+          "selectedActionIds": "Action",
+          "selectedCurrencyIds": "Currency",
+          "selectedEngineIds": "Engine",
+          "selectedOptionsId": "Options"
         }
       }
     },
@@ -255,7 +270,8 @@
       "password": "Upper case, Lower case, Numeric, @ $ #",
       "select-one": "Select Options",
       "email": "Email Address",
-      "phone": "Phone Number"
+      "phone": "Phone Number",
+      "url": "URL"
     },
     "message": {
       "generic": {
@@ -276,6 +292,7 @@
       "failure": {
         "COMMENT-01": "front-end only errors - start",
         "f001": "Please provide the search inputs",
+        "f002": "Please select menu details.",
         "COMMENT-02": "front-end only errors - start",
         "COMMENT-03": "core and front-end only errors - start",
         "000": "Problem occurred. Please try again later.",
@@ -302,6 +319,7 @@
         "021": "Emailed link expired.",
         "022": "Please enter the user id",
         "023": "DB error occurred, Possible duplicate. Check the logs. ",
+        "024": "Invalid URL.",
         "COMMENT-04": "core and front-end only errors - end",
         "COMMENT-05": "Org service errors - start",
         "COMMENT-06": "Org service errors - end"

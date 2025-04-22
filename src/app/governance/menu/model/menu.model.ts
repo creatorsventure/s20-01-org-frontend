@@ -10,4 +10,5 @@ export interface IMenu extends GenericModelType {
     menuType?: number;
     moduleId?: string;
     submenu?: any[];
+    dashboardCountCard: boolean;
 }

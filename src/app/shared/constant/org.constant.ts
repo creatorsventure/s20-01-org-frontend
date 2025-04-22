@@ -21,4 +21,8 @@ export const engineTypeOptions: Map<number, string> = new Map([
     [1, 'Switch']
 ]);
 
+export const unitTypeOptions: Map<string, string> = new Map([
+    ['psp', 'PSP']
+]);
+
 

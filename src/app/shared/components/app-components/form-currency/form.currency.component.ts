@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ControlValueAccessorDirective} from '../../../directives/ControlValueAccessorDirective';
 import * as currencyCodes from 'currency-codes';
@@ -15,7 +15,7 @@ import * as currencyCodes from 'currency-codes';
     ],
     standalone: false
 })
-export class FormCurrencyComponent<T> extends ControlValueAccessorDirective<T> implements OnInit {
+export class FormCurrencyComponent<T> extends ControlValueAccessorDirective<T> {
 
     @Input()
     controlName: string;
@@ -34,7 +34,4 @@ export class FormCurrencyComponent<T> extends ControlValueAccessorDirective<T> i
         this.change.emit(value);
     }
 
-    override ngOnInit(): void {
-
-    }
 }

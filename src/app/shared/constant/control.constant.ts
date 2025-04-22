@@ -13,8 +13,16 @@ export const CONTROL_DESCRIPTION = {
         type: CONTROL_TYPE.INPUT_SPECIAL,
         minLength: 3,
         maxLength: 250,
-        pattern: '^[a-zA-Z0-9_, ./-]*$',
+        pattern: '^[a-zA-Z0-9_, ./-:]*$',
         patternKey: 'app.regxPatterns.inputSpecial',
+        tooltip: 'app.general.tooltip.general'
+    },
+    url: {
+        type: CONTROL_TYPE.URL,
+        minLength: 3,
+        maxLength: 250,
+        pattern: '^(https?:\\/\\/)(localhost|\\d{1,3}(\\.\\d{1,3}){3}|[\\w.-]+\\.[a-z]{2,})(:\\d{1,5})?(\\/[^\\s]*)?$',
+        patternKey: 'app.regxPatterns.url',
         tooltip: 'app.general.tooltip.general'
     },
     numeric: {

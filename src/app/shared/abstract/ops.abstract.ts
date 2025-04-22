@@ -1,5 +1,5 @@
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {APP_NAVIGATION} from '../routes/navigation.constant';
 import {AppControlService} from '../services/app.control.service';
 import {CRUDService} from '../services/crud.service';
@@ -13,6 +13,7 @@ export abstract class OpsAbstract {
     public controlDesc = CONTROL_DESCRIPTION;
     public crudForm: FormGroup;
     public crudOps: string | null = null;
+    public permissions: any = APP_NAVIGATION.permissions;
 
     protected constructor(
         public fb: FormBuilder,
@@ -20,6 +21,7 @@ export abstract class OpsAbstract {
         public crudService: CRUDService,
         public appCtrlService: AppControlService,
         public alertService: AlertService,
+        public router: Router
     ) {
     }
 
@@ -51,7 +53,7 @@ export abstract class OpsAbstract {
 
     createOrUpdate(finalObject?: any): void {
         updateFormDirtyAndValueAndValidity(this.crudForm);
-        console.log(finalObject ? finalObject : this.crudForm.value);
+        // console.log('createOrUpdate: ', finalObject ? finalObject : this.crudForm.value);
         if (this.crudForm.valid) {
             if (
                 this.crudOps === APP_NAVIGATION.permissions.add &&
@@ -74,6 +76,7 @@ export abstract class OpsAbstract {
                         },
                         complete: () => {
                             this.alertService.publishStatus(true);
+                            this.redirectToListPage();
                         },
                     });
             } else if (
@@ -97,6 +100,7 @@ export abstract class OpsAbstract {
                         },
                         complete: () => {
                             this.alertService.publishStatus(true);
+                            this.redirectToListPage();
                         },
                     });
             } else {
@@ -126,5 +130,15 @@ export abstract class OpsAbstract {
 
     public getFormField(controlName: string): FormControl {
         return this.crudForm?.get(controlName) as FormControl;
+    }
+
+    redirectToListPage(): void {
+        if (this.crudOps === this.permissions.add) {
+            this.router.navigate(['../'], {relativeTo: this.activatedRoute, skipLocationChange: true});
+        } else if (this.crudOps === this.permissions.view || this.crudOps === this.permissions.edit) {
+            this.router.navigate(['../../'], {relativeTo: this.activatedRoute, skipLocationChange: true});
+        } else {
+            console.log('redirectToListPage invalid crudOps! ', this.crudOps);
+        }
     }
 }

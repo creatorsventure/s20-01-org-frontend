@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input} from '@angular/core';
+import {AfterViewInit, Component, forwardRef, Input} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Control} from '../../../interfaces/control.type';
 import {ControlValueAccessorDirective} from '../../../directives/ControlValueAccessorDirective';
@@ -15,7 +15,8 @@ import {ControlValueAccessorDirective} from '../../../directives/ControlValueAcc
     ],
     standalone: false
 })
-export class FormSwitchComponent<T> extends ControlValueAccessorDirective<T> {
+export class FormSwitchComponent<T> extends ControlValueAccessorDirective<T> implements AfterViewInit {
+
     @Input()
     controlName: string;
     @Input()
@@ -30,4 +31,11 @@ export class FormSwitchComponent<T> extends ControlValueAccessorDirective<T> {
     crudOps: string;
     @Input()
     controlDesc: Control;
+
+    ngAfterViewInit(): void {
+        if (this.control && this.control.pristine) {
+            this.control.setValue(false, {emitEvent: false});
+        }
+    }
+
 }
