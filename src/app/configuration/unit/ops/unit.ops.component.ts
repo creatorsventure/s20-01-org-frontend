@@ -32,7 +32,7 @@ export class UnitOpsComponent extends OpsAbstract implements OnInit {
             unitCode: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.unitCode),
             unitId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.unitId),
             legalName: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.legalName, false),
-            address: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.address),
+            address: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.inputSpecial, this.object?.address),
             bankIdentificationCode: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.bankIdentificationCode),
             type: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectOne, this.object?.type),
             selectedActionIds: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectMany, this.object?.selectedActionIds),

@@ -20,7 +20,7 @@
     </ng-template>
     <nz-form-control class="form-field-control" *ngIf="crudOps === permissions.view">
         <ng-container *ngFor="let entry of currencies">
-            <span *ngIf="entry.code === (entry.number + ' - ' + entry.code)">{{ entry.number + ' - ' + entry.code + ' - ' + entry.currency }}</span>
+            <span *ngIf="control.value === (entry.number + ' - ' + entry.code)">{{ entry.number + ' - ' + entry.code + ' - ' + entry.currency }}</span>
         </ng-container>
     </nz-form-control>
 </nz-form-item>
