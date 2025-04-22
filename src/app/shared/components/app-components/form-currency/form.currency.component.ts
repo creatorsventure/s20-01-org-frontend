@@ -15,7 +15,7 @@ import * as currencyCodes from 'currency-codes';
     ],
     standalone: false
 })
-export class FormCurrencyComponent<T> extends ControlValueAccessorDirective<T> implements OnInit {
+export class FormCurrencyComponent<T> extends ControlValueAccessorDirective<T> {
 
     @Input()
     controlName: string;
@@ -32,9 +32,5 @@ export class FormCurrencyComponent<T> extends ControlValueAccessorDirective<T> i
 
     onSelectChange(value: any): void {
         this.change.emit(value);
-    }
-
-    override ngOnInit(): void {
-
     }
 }
