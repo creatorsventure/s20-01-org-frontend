@@ -34,7 +34,4 @@ export class FormCurrencyComponent<T> extends ControlValueAccessorDirective<T> {
         this.change.emit(value);
     }
 
-    override ngOnInit(): void {
-
-    }
 }

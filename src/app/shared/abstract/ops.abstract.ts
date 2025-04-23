@@ -53,7 +53,6 @@ export abstract class OpsAbstract {
 
     createOrUpdate(finalObject?: any): void {
         updateFormDirtyAndValueAndValidity(this.crudForm);
-        // console.log('createOrUpdate: ', finalObject ? finalObject : this.crudForm.value);
         if (this.crudForm.valid) {
             if (
                 this.crudOps === APP_NAVIGATION.permissions.add &&
