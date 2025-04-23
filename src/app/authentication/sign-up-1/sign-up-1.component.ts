@@ -6,6 +6,7 @@ import {ISignup} from './signup.model';
 import {NzModalService} from 'ng-zorro-antd/modal';
 import {TranslateService} from '@ngx-translate/core';
 import {API_METHOD, APP_NAVIGATION} from '../../shared/routes/navigation.constant';
+import {AlertService} from '../../shared/services/alert.service';
 
 
 @Component({
@@ -21,10 +22,10 @@ export class SignUp1Component {
     isModelVisible = false;
 
     submitForm(): void {
-        for (const i in this.signUpForm.controls) {
-            this.signUpForm.controls[i].markAsDirty();
-            this.signUpForm.controls[i].updateValueAndValidity();
-        }
+        Object.keys(this.signUpForm.controls).forEach(controlName => {
+            this.signUpForm.controls[controlName].markAsDirty();
+            this.signUpForm.controls[controlName].updateValueAndValidity();
+        });
         if (this.signUpForm.valid) {
             this.signupObj = this.signUpForm.value;
             this.signupObj.countryCode = '+91';
@@ -33,15 +34,12 @@ export class SignUp1Component {
                 .post(APP_NAVIGATION.signup, this.signupObj)
                 .subscribe({
                     error: (err) => {
-                        this.modal.error({
-                            nzTitle: this.translate.instant('app.page.login.signup-failure-title'),
-                            nzContent: err?.error?.message ? this.translate.instant(err?.error?.message) : err.message,
-                        });
+                        this.alertService.alertHttpErrorResp(err, APP_NAVIGATION.signup);
                     },
                     complete: () => {
                         this.modal.success({
-                            nzTitle: this.translate.instant('app.page.login.signup-success-title'),
-                            nzContent: this.translate.instant('app.page.login.signup-success-hint'),
+                            nzTitle: this.translate.instant('app.page.sign-up.signup-success-title'),
+                            nzContent: this.translate.instant('app.page.sign-up.signup-success-hint'),
                             nzOnOk: () => this.handleOk(),
                             nzOnCancel: () => this.handleCancel()
                         });
@@ -68,7 +66,8 @@ export class SignUp1Component {
         private route: ActivatedRoute,
         private fb: UntypedFormBuilder,
         private crudService: CRUDService,
-        private translate: TranslateService) {
+        private translate: TranslateService,
+        private alertService: AlertService) {
     }
 
     ngOnInit(): void {

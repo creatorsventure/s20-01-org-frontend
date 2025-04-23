@@ -7,6 +7,7 @@ import {NzModalService} from 'ng-zorro-antd/modal';
 import {TranslateService} from '@ngx-translate/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../shared/services/auth.service';
+import {AlertService} from '../../shared/services/alert.service';
 
 @Component({
     templateUrl: './login-1.component.html',
@@ -28,10 +29,7 @@ export class Login1Component {
                 .subscribe({
                     error: (err) => {
                         // console.log('login error: ', err);
-                        this.modal.error({
-                            nzTitle: this.translate.instant('app.page.login.signup-failure-title'),
-                            nzContent: err?.error?.message ? this.translate.instant(err?.error?.message) : err.message,
-                        });
+                        this.alertService.alertHttpErrorResp(err, APP_NAVIGATION.authentication);
                     },
                     complete: () => {
                         this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
@@ -47,7 +45,7 @@ export class Login1Component {
         const userId: string = this.loginForm.controls.userId.value;
         if (!userId) {
             this.modal.error({
-                nzTitle: this.translate.instant('app.page.login.signup-failure-title'),
+                nzTitle: this.translate.instant('app.page.login.failure-title'),
                 nzContent: this.translate.instant('app.message.failure.022'),
             });
         } else {
@@ -65,8 +63,8 @@ export class Login1Component {
             .subscribe(status => {
                 if (Boolean(status)) {
                     this.modal.success({
-                        nzTitle: this.translate.instant('app.page.login.signup-success-title'),
-                        nzContent: this.translate.instant('app.page.login.signup-success-hint'),
+                        nzTitle: this.translate.instant('app.page.login.success-title'),
+                        nzContent: this.translate.instant('app.page.login.success-hint'),
                     });
                 }
             });
@@ -79,6 +77,7 @@ export class Login1Component {
         public authService: AuthService,
         private modal: NzModalService,
         private translate: TranslateService,
+        private alertService: AlertService
     ) {
     }
 

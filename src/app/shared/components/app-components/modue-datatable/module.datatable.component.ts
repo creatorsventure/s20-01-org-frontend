@@ -33,7 +33,10 @@ export class ModuleDatatableComponent implements OnInit {
     public deleteButtonDisplay = true;
 
     @Input()
-    public resendPasswordMailOption: boolean;
+    public resendPasswordMailOption = false;
+
+    @Input()
+    public signUpMailOption = false;
 
     ngOnInit(): void {
     }
@@ -81,6 +84,24 @@ export class ModuleDatatableComponent implements OnInit {
     public resendPasswordMail(id: number): void {
         this.service
             .read(APP_NAVIGATION.password + API_METHOD.resendPasswordMail, [
+                {key: 'id', value: id},
+            ])
+            .subscribe({
+                next: (status) => {
+                    if (status) {
+                        this.alertService.success('app.message.success.000', true);
+                        this.refreshDatatable();
+                    }
+                },
+                error: (err) => {
+                    this.alertService.alertHttpErrorResp(err, null);
+                }
+            });
+    }
+
+    public signUpMail(id: number): void {
+        this.service
+            .read(APP_NAVIGATION.unit + API_METHOD.signupMail, [
                 {key: 'id', value: id},
             ])
             .subscribe({

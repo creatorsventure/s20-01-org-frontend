@@ -42,6 +42,7 @@ export const API_METHOD = {
     delete: '/delete',
     changeStatus: '/update-status',
     resendPasswordMail: '/resend-password-email',
+    signupMail: '/signup-email',
     menuTree: '/menu-tree',
     idNameMap: '/read-id-name-map',
     count: '/count',

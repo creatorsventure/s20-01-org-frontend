@@ -61,6 +61,16 @@
                         <i nz-icon nzType="mail" nzTheme="twotone" nzTwotoneColor="#3F87F5"></i>
                     </a>
                 </ng-container>
+                <ng-container *ngIf="signUpMailOption">
+                    <a *nzSpaceItem nz-tooltip
+                       nzTooltipTitle="{{'app.general.button.sign-up-email' | translate}}"
+                       nz-popconfirm nzPopconfirmTitle="{{'app.general.button.sign-up-email' | translate}}"
+                       nzPopconfirmPlacement="bottom" nzOkText="{{'app.general.button.yes' | translate}}"
+                       nzCancelText="{{'app.general.button.no' | translate}}"
+                       (nzOnConfirm)="signUpMail(page.id)">
+                        <i nz-icon nzType="mail" nzTheme="twotone" nzTwotoneColor="#3F87F5"></i>
+                    </a>
+                </ng-container>
                 <ng-container *ngIf="viewButtonDisplay">
                     <a *nzSpaceItem nz-tooltip nzTooltipTitle="{{'app.general.button.view' | translate}}"
                        routerLink="view/{{ page.id }}">

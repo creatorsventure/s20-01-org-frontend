@@ -25,9 +25,26 @@
 
         </div>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-input [controlDesc]="controlDesc.input" controlName="adminName"
+                            [pageName]="pageName" [crudOps]="crudOps" formControlName="adminName"/>
+
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-email [controlDesc]="controlDesc.email" controlName="adminEmail"
+                            [pageName]="pageName" [crudOps]="crudOps" formControlName="adminEmail"/>
+
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
             <app-form-input [controlDesc]="controlDesc.inputSpecial" controlName="address"
                             [pageName]="pageName" [crudOps]="crudOps" formControlName="address"/>
 
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-select-one formControlName="selectedOptionsId" controlName="selectedOptionsId"
+                                 [controlOptions]="optionsIdNameMap"
+                                 [pageName]="pageName" [crudOps]="crudOps"/>
         </div>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
             <app-form-select-one controlName="type" formControlName="type"
@@ -51,13 +68,6 @@
             <app-form-select-many formControlName="selectedEngineIds" controlName="selectedEngineIds"
                                   [controlOptions]="engineIdNameMap"
                                   [pageName]="pageName" [crudOps]="crudOps"/>
-        </div>
-    </div>
-    <div nz-row>
-        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
-            <app-form-select-one formControlName="selectedOptionsId" controlName="selectedOptionsId"
-                                 [controlOptions]="optionsIdNameMap"
-                                 [pageName]="pageName" [crudOps]="crudOps"/>
         </div>
     </div>
     <app-form-audit [object]="object" [crudOps]="crudOps"></app-form-audit>

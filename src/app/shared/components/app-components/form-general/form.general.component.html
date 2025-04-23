@@ -61,7 +61,7 @@
             </nz-form-label>
             <nz-form-control class="form-field-control" *ngIf="crudOps !== permissions.view"
                              [nzErrorTip]="statusErrorTemplate">
-                <nz-select [formControl]="status" nzSize="small"
+                <nz-select [formControl]="status" nzSize="small" required
                            nzPlaceHolder="{{'app.general.pagination.select' | translate}}">
                     <nz-option [nzValue]="true" nzLabel="{{'app.general.status.active' | translate}}"></nz-option>
                     <nz-option [nzValue]="false" nzLabel="{{'app.general.status.inactive' | translate}}"></nz-option>
