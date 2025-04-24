@@ -1,6 +1,5 @@
 import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, forwardRef, Injector, Input, OnInit, Output} from '@angular/core';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import { FormGroup } from '@angular/forms';
+import {FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ControlValueAccessorDirective} from '../../../directives/ControlValueAccessorDirective';
 import {PhoneNumberUtil} from 'google-libphonenumber';
 import * as countries from 'i18n-iso-countries';
@@ -47,35 +46,31 @@ export class FormPhoneComponent extends ControlValueAccessorDirective<string> im
     }
 
     override ngOnInit(): void {
-      this.setFormControl();
+        this.setFormControl();
 
-      const regions = Array.from(this.phoneUtil.getSupportedRegions());
-      this.countryList = regions.map(code => {
-        try {
-          const example = this.phoneUtil.getExampleNumber(code);
-          const dialCode = '+' + example.getCountryCode();
-          const name = countries.getName(code, 'en') || code;
-          const flag = this.getFlagEmoji(code);
-          return { code, name, dialCode, flag };
-        } catch {
-          return null;
+        const regions = Array.from(this.phoneUtil.getSupportedRegions());
+        this.countryList = regions.map(code => {
+            try {
+                const example = this.phoneUtil.getExampleNumber(code);
+                const dialCode = '+' + example.getCountryCode();
+                const name = countries.getName(code, 'en') || code;
+                const flag = this.getFlagEmoji(code);
+                return {code, name, dialCode, flag};
+            } catch {
+                return null;
+            }
+        }).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name));
+
+        if (this.crudOps === this.permissions.view || this.crudOps === this.permissions.edit) {
+            const value = this.parentForm?.get('countryCode')?.value;
+            if (value) {
+                this.selectedCountry = this.countryList.find(c => c.dialCode === value);
+            }
         }
-      }).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name));
-
-    if(this.crudOps === this.permissions.view || this.crudOps === this.permissions.edit){
-
-      const dbValue = this.parentForm?.get('countryCode')?.value;
-
-      if (dbValue) {
-        this.selectedCountry = this.countryList.find(c => c.dialCode === dbValue);
-      }
-    }
-
-      if (!this.selectedCountry) {
-        this.selectedCountry = this.countryList.find(c => c.code === 'OM') || this.countryList[0];
-      }
-
-      this.countryCodeChange.emit(this.selectedCountry.dialCode);
+        if (!this.selectedCountry) {
+            this.selectedCountry = this.countryList.find(c => c.code === 'OM') || this.countryList[0];
+        }
+        this.countryCodeChange.emit(this.selectedCountry.dialCode);
     }
 
     ngAfterViewInit(): void {

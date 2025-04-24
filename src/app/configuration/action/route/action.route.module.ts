@@ -25,12 +25,12 @@ export const routes: Routes = [{
         component: ActionOpsComponent,
         data: {pageName: APP_NAVIGATION.action, title: 'app.general.button.add', crudOps: APP_NAVIGATION.permissions.add},
     }, {
-        path: APP_NAVIGATION.permissions.edit + APP_NAVIGATION.permissions.resolverParam,
+        path: APP_NAVIGATION.permissions.edit + APP_NAVIGATION.resolverParam,
         component: ActionOpsComponent,
         data: {pageName: APP_NAVIGATION.action, title: 'app.general.button.edit', crudOps: APP_NAVIGATION.permissions.edit},
         resolve: {object: RouteResolver},
     }, {
-        path: APP_NAVIGATION.permissions.view + APP_NAVIGATION.permissions.resolverParam,
+        path: APP_NAVIGATION.permissions.view + APP_NAVIGATION.resolverParam,
         component: ActionOpsComponent,
         data: {pageName: APP_NAVIGATION.action, title: 'app.general.button.view', crudOps: APP_NAVIGATION.permissions.view},
         resolve: {object: RouteResolver},

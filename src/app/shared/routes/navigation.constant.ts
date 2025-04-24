@@ -7,8 +7,8 @@ export const APP_NAVIGATION = {
         delete: 'delete',
         approve: 'approve',
         reject: 'reject',
-        resolverParam: '/:id'
     },
+    resolverParam: '/:id',
     error: 'authentication/error-1',
     info: 'authentication/error-2',
     authentication: 'authentication',

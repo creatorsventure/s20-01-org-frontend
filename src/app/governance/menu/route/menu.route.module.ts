@@ -37,7 +37,7 @@ export const routes: Routes = [
                 },
             },
             {
-                path: APP_NAVIGATION.permissions.edit + APP_NAVIGATION.permissions.resolverParam,
+                path: APP_NAVIGATION.permissions.edit + APP_NAVIGATION.resolverParam,
                 component: MenuOpsComponent,
                 data: {
                     pageName: APP_NAVIGATION.menu,
@@ -49,7 +49,7 @@ export const routes: Routes = [
                 },
             },
             {
-                path: APP_NAVIGATION.permissions.view + APP_NAVIGATION.permissions.resolverParam,
+                path: APP_NAVIGATION.permissions.view + APP_NAVIGATION.resolverParam,
                 component: MenuOpsComponent,
                 data: {
                     pageName: APP_NAVIGATION.menu,
