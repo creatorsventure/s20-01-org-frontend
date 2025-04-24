@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {APP_NAVIGATION} from '../../../routes/navigation.constant';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
     selector: 'app-module-index',
@@ -8,6 +9,9 @@ import {APP_NAVIGATION} from '../../../routes/navigation.constant';
     standalone: false
 })
 export class ModuleIndexComponent implements OnInit {
+    sessionPermissions: string[];
+    permissions = APP_NAVIGATION.permissions;
+
     @Input()
     public acRoute: ActivatedRoute;
 
@@ -29,9 +33,10 @@ export class ModuleIndexComponent implements OnInit {
                 }
             }
         );
+        this.sessionPermissions = this.authService.getPermissions();
     }
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private authService: AuthService) {
     }
 
     redirectToListPage(): void {

@@ -5,6 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {MenuListComponent} from '../list/menu.list.component';
 import {MenuOpsComponent} from '../ops/menu.ops.component';
 import {RouteResolver} from '../../../shared/resolver/route.resolver';
+import {PermissionGuard} from '../../../shared/guard/permission.guard';
 
 export const routes: Routes = [
     {
@@ -26,6 +27,7 @@ export const routes: Routes = [
                     title: 'app.general.button.all',
                     crudOps: APP_NAVIGATION.permissions.list,
                 },
+                canActivate: [PermissionGuard]
             },
             {
                 path: APP_NAVIGATION.permissions.add,
@@ -35,6 +37,7 @@ export const routes: Routes = [
                     title: 'app.general.button.add',
                     crudOps: APP_NAVIGATION.permissions.add,
                 },
+                canActivate: [PermissionGuard]
             },
             {
                 path: APP_NAVIGATION.permissions.edit + APP_NAVIGATION.resolverParam,
@@ -47,6 +50,7 @@ export const routes: Routes = [
                 resolve: {
                     object: RouteResolver,
                 },
+                canActivate: [PermissionGuard]
             },
             {
                 path: APP_NAVIGATION.permissions.view + APP_NAVIGATION.resolverParam,
@@ -59,6 +63,7 @@ export const routes: Routes = [
                 resolve: {
                     object: RouteResolver,
                 },
+                canActivate: [PermissionGuard]
             },
         ],
     },

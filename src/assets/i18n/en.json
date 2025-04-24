@@ -94,6 +94,8 @@
       "login": {
         "content-1": "Organization Management",
         "content-2": "Organization Management enables administrators to configure schemes, manage merchant categories, users, engines, and actions—centralizing control and customization for operational and transactional workflows.",
+        "sign-up": "Signup",
+        "sign-up-hint": "Don't have an account?",
         "sign-in": "Sign In",
         "sign-in-desc": "Enter your credential to get access",
         "success-title": "Operation completed successfully",
@@ -177,7 +179,7 @@
         "name": "Role",
         "description": "Role can be created here!",
         "label": {
-          "selectedOrganizationIds": "Organization",
+          "organizationId": "Organization",
           "selectedPermissionIds": "Permission",
           "menuIds": "Menu Details"
         }

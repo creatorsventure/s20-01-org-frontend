@@ -19,9 +19,9 @@
     </div>
     <div nz-row>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
-            <app-form-select-many formControlName="selectedRoleIds" controlName="selectedRoleIds"
-                                  [controlOptions]="roleIdNameMap"
-                                  [pageName]="pageName" [crudOps]="crudOps"/>
+            <app-form-select-one formControlName="roleId" controlName="roleId"
+                                 [controlOptions]="roleIdNameMap"
+                                 [pageName]="pageName" [crudOps]="crudOps"/>
         </div>
     </div>
     <app-form-audit [object]="object" [crudOps]="crudOps"></app-form-audit>

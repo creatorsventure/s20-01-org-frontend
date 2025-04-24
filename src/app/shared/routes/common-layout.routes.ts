@@ -9,7 +9,8 @@ export const COMMON_LAYOUT_ROUTES: Routes = [
             import('../../dashboard/dashboard.module').then((m) => m.DashboardModule),
         data: {
             headerDisplay: 'none',
-        }, // canActivate: [AuthGuard]
+        },
+        canActivate: [AuthGuard]
     },
     {
         path: APP_NAVIGATION.governance + '/' + APP_NAVIGATION.organization,

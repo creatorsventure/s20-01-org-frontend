@@ -5,6 +5,7 @@ import {APP_NAVIGATION} from '../../../shared/routes/navigation.constant';
 import {UnitIndexComponent} from '../index/unit.index.component';
 import {UnitListComponent} from '../list/unit.list.component';
 import {UnitOpsComponent} from '../ops/unit.ops.component';
+import {PermissionGuard} from '../../../shared/guard/permission.guard';
 
 export const routes: Routes = [{
     path: '',
@@ -20,6 +21,7 @@ export const routes: Routes = [{
         path: '',
         component: UnitListComponent,
         data: {pageName: APP_NAVIGATION.unit, title: 'app.general.button.all', crudOps: APP_NAVIGATION.permissions.list},
+        canActivate: [PermissionGuard]
     }, {
         path: APP_NAVIGATION.permissions.add,
         component: UnitOpsComponent,

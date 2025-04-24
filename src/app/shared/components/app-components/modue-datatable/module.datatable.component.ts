@@ -4,6 +4,7 @@ import {CRUDService} from '../../../services/crud.service';
 import {NzTableQueryParams} from 'ng-zorro-antd/table';
 import {API_METHOD, APP_NAVIGATION} from '../../../routes/navigation.constant';
 import {AlertService} from '../../../services/alert.service';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
     selector: 'app-module-datatable',
@@ -11,10 +12,12 @@ import {AlertService} from '../../../services/alert.service';
     standalone: false
 })
 export class ModuleDatatableComponent implements OnInit {
-    constructor(
-        private service: CRUDService,
-        private alertService: AlertService,
-    ) {
+    sessionPermissions: string[];
+    permissions = APP_NAVIGATION.permissions;
+
+    constructor(private service: CRUDService,
+                private alertService: AlertService,
+                private authService: AuthService) {
     }
 
     @Input()
@@ -39,6 +42,7 @@ export class ModuleDatatableComponent implements OnInit {
     public signUpMailOption = false;
 
     ngOnInit(): void {
+        this.sessionPermissions = this.authService.getPermissions();
     }
 
     public refreshDatatable(): void {

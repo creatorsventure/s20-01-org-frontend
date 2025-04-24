@@ -34,8 +34,8 @@ export class RoleOpsComponent extends OpsAbstract implements OnInit {
     ngOnInit(): void {
         super.init();
         this.crudForm = this.fb.group({
-            selectedOrganizationIds: this.appCtrlService.generateFormControl(
-                CONTROL_DESCRIPTION.selectMany, this.object?.selectedOrganizationIds),
+            organizationId: this.appCtrlService.generateFormControl(
+                CONTROL_DESCRIPTION.selectOne, this.object?.organizationId),
             selectedPermissionIds: this.appCtrlService.generateFormControl(
                 CONTROL_DESCRIPTION.selectMany, this.object?.selectedPermissionIds),
         });

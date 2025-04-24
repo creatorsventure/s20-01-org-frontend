@@ -5,6 +5,7 @@ import {APP_NAVIGATION} from '../../../shared/routes/navigation.constant';
 import {OptionsIndexComponent} from '../index/options.index.component';
 import {OptionsListComponent} from '../list/options.list.component';
 import {OptionsOpsComponent} from '../ops/options.ops.component';
+import {PermissionGuard} from '../../../shared/guard/permission.guard';
 
 export const routes: Routes = [{
     path: '',
@@ -20,6 +21,7 @@ export const routes: Routes = [{
         path: '',
         component: OptionsListComponent,
         data: {pageName: APP_NAVIGATION.options, title: 'app.general.button.all', crudOps: APP_NAVIGATION.permissions.list},
+        canActivate: [PermissionGuard]
     }, {
         path: APP_NAVIGATION.permissions.add,
         component: OptionsOpsComponent,

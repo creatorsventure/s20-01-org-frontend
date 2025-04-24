@@ -51,7 +51,7 @@
         <td [nzEllipsis]="true">{{ page.description }}</td>
         <td [nzRight]="true">
             <nz-space>
-                <ng-container *ngIf="resendPasswordMailOption">
+                <ng-container *ngIf="resendPasswordMailOption && sessionPermissions.includes(permissions.list)">
                     <a *nzSpaceItem nz-tooltip
                        nzTooltipTitle="{{'app.general.button.resend-password-email' | translate}}"
                        nz-popconfirm nzPopconfirmTitle="{{'app.general.button.resend-password-email' | translate}}"
@@ -61,7 +61,7 @@
                         <i nz-icon nzType="mail" nzTheme="twotone" nzTwotoneColor="#3F87F5"></i>
                     </a>
                 </ng-container>
-                <ng-container *ngIf="signUpMailOption">
+                <ng-container *ngIf="signUpMailOption && sessionPermissions.includes(permissions.list)">
                     <a *nzSpaceItem nz-tooltip
                        nzTooltipTitle="{{'app.general.button.sign-up-email' | translate}}"
                        nz-popconfirm nzPopconfirmTitle="{{'app.general.button.sign-up-email' | translate}}"
@@ -71,19 +71,19 @@
                         <i nz-icon nzType="mail" nzTheme="twotone" nzTwotoneColor="#3F87F5"></i>
                     </a>
                 </ng-container>
-                <ng-container *ngIf="viewButtonDisplay">
+                <ng-container *ngIf="viewButtonDisplay && sessionPermissions.includes(permissions.view)">
                     <a *nzSpaceItem nz-tooltip nzTooltipTitle="{{'app.general.button.view' | translate}}"
                        routerLink="view/{{ page.id }}">
                         <i nz-icon nzType="security-scan" nzTheme="twotone" nzTwotoneColor="#3f87f5"></i>
                     </a>
                 </ng-container>
-                <ng-container *ngIf="editButtonDisplay">
+                <ng-container *ngIf="editButtonDisplay && sessionPermissions.includes(permissions.edit)">
                     <a *nzSpaceItem nz-tooltip nzTooltipTitle="{{'app.general.button.edit' | translate}}"
                        routerLink="edit/{{ page.id }}">
                         <i nz-icon nzType="edit" nzTheme="twotone" nzTwotoneColor="#856404"></i>
                     </a>
                 </ng-container>
-                <ng-container *ngIf="deleteButtonDisplay">
+                <ng-container *ngIf="deleteButtonDisplay && sessionPermissions.includes(permissions.delete)">
                     <a *nzSpaceItem nz-tooltip nzTooltipTitle="{{'app.general.button.delete' | translate}}"
                        nz-popconfirm
                        nzPopconfirmTitle="{{'app.general.popup.deletePopUp' | translate}}"
@@ -105,7 +105,8 @@
             <span> {{ 'app.general.pagination.noData' | translate }} </span>
         </ng-template>
         <ng-template #footerTpl>
-            <a nz-button nzType="primary" nzSize="small" routerLink="add">
+            <a *ngIf="sessionPermissions.includes(permissions.add)" nz-button nzType="primary" nzSize="small"
+               routerLink="add">
                 <i nz-icon nzType="plus-circle"></i>{{ 'app.general.button.add' | translate }}
             </a>
         </ng-template>

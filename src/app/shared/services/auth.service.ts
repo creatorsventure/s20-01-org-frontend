@@ -41,6 +41,15 @@ export class AuthService {
         );
     }
 
+    public clearSession(): void {
+        this.storage.clearStorage();
+    }
+
+    public getPermissions(): string[] {
+        const authInfo: IAuthInfo = this.storage.get(LOCAL_STORAGE_KEYS.AUTH_INFO);
+        return authInfo?.permissions;
+    }
+
     public refreshToken(authInfo: IAuthInfo): Observable<IAuthInfo> {
         return this.post(
             APP_NAVIGATION.authentication + API_METHOD.refreshToken,
@@ -55,7 +64,7 @@ export class AuthService {
         if (authInfo) {
             return this.post(
                 APP_NAVIGATION.role + API_METHOD.loadRoleMenu,
-                authInfo.roleIds,
+                authInfo.roleId,
                 AUTH_SERVICE_REQUEST_TYPE.LOAD_ROLE_MENU
             );
         }
@@ -71,15 +80,15 @@ export class AuthService {
                         apiResponse.type === APIResponseType.OBJECT_ONE
                     ) {
                         if (apiResponse.object && type === AUTH_SERVICE_REQUEST_TYPE.LOGIN) {
-                            this.storage.clearStorage();
+                            this.clearSession();
                             // this.storage.storePlain('user', apiResponse.object.userId);
                             this.storage.storeAuthInfo(apiResponse.object);
                             return true;
                         } else if (apiResponse.object && type === AUTH_SERVICE_REQUEST_TYPE.LOGOUT) {
-                            this.storage.clearStorage();
+                            this.clearSession();
                             return Boolean(apiResponse.object);
                         } else if (apiResponse.object && type === AUTH_SERVICE_REQUEST_TYPE.REFRESH_TOKEN) {
-                            this.storage.clearStorage();
+                            this.clearSession();
                             this.storage.storeAuthInfo(apiResponse.object);
                             return apiResponse.object;
                         } else if (apiResponse.object && type === AUTH_SERVICE_REQUEST_TYPE.LOAD_ROLE_MENU) {
@@ -89,6 +98,7 @@ export class AuthService {
                     }
                 }),
                 catchError((err) => {
+                    this.clearSession();
                     if (err && err.status === HttpStatusCode.ServiceUnavailable) {
                         this.router.navigate([APP_NAVIGATION.info]);
                     }

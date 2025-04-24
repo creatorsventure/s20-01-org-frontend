@@ -3,7 +3,7 @@
                       [object]="object"></app-form-general>
     <div nz-row>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="12" [nzXXl]="12">
-            <app-form-select-many formControlName="selectedOrganizationIds" controlName="selectedOrganizationIds"
+            <app-form-select-one formControlName="organizationId" controlName="organizationId"
                                  [controlOptions]="organizationIdNameMap"
                                  [pageName]="pageName" [crudOps]="crudOps"/>
         </div>

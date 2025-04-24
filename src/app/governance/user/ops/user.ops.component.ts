@@ -29,7 +29,7 @@ export class UserOpsComponent extends OpsAbstract implements OnInit {
             mobileNumber: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.phone, this.object?.mobileNumber),
             countryCode: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.phone, this.object?.countryCode),
             email: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.email, this.object?.email),
-            selectedRoleIds: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectMany, this.object?.selectedRoleIds)
+            roleId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectOne, this.object?.selectedRoleIds)
         });
         this.crudService.getData(APP_NAVIGATION.role + API_METHOD.idNameMap).subscribe(idNameMap => {
             this.roleIdNameMap = idNameMap;
