@@ -26,6 +26,7 @@ import {ThemeConstantService} from '../services/theme-constant.service';
 import {AlertComponent} from './alert/alert.component';
 import {NzModalModule} from 'ng-zorro-antd/modal';
 import {NzMenuModule} from 'ng-zorro-antd/menu';
+import {NzPopconfirmDirective} from 'ng-zorro-antd/popconfirm';
 
 const antdModule = [
     NzAvatarModule,
@@ -54,7 +55,7 @@ const antdModule = [
         SideNavDirective,
         FooterComponent,
     ],
-    imports: [RouterModule, CommonModule, SharedModule, ...antdModule],
+    imports: [RouterModule, CommonModule, SharedModule, ...antdModule, NzPopconfirmDirective],
     declarations: [
         AlertComponent,
         HeaderComponent,

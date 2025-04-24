@@ -49,7 +49,8 @@
       },
       "popup": {
         "deletePopUp": "Are you sure to delete?",
-        "statusPopUp": "Are you sure to change status?"
+        "statusPopUp": "Are you sure to change status?",
+        "sign-out-popup": "Are you sure to sign out?"
       },
       "audit": {
         "createdAt": "Created At",
@@ -191,7 +192,7 @@
           "userId": "User Id",
           "mobileNumber": "Mobile Number",
           "email": "Email",
-          "selectedRoleIds": "Role"
+          "roleId": "Role"
         }
       },
       "password": {

@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
 import {ThemeConstantService} from '../../services/theme-constant.service';
-import {APP_NAVIGATION} from '../../routes/navigation.constant';
+import {APP_NAVIGATION, LOCAL_STORAGE_KEYS} from '../../routes/navigation.constant';
 import {NzModalService} from 'ng-zorro-antd/modal';
 import {TranslateService} from '@ngx-translate/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {StorageService} from '../../services/storage.service';
 
 @Component({
     selector: 'app-header',
@@ -14,6 +15,7 @@ import {AuthService} from '../../services/auth.service';
 
 export class HeaderComponent {
 
+    currentUserName = 'User';
     searchVisible = false;
     quickViewVisible = false;
     isFolded: boolean;
@@ -24,8 +26,8 @@ export class HeaderComponent {
         public authService: AuthService,
         private modal: NzModalService,
         private translate: TranslateService,
-        private themeService: ThemeConstantService
-    ) {
+        public storage: StorageService,
+        private themeService: ThemeConstantService) {
     }
 
     logout(): void {
@@ -52,6 +54,7 @@ export class HeaderComponent {
     ngOnInit(): void {
         this.themeService.isMenuFoldedChanges.subscribe(isFolded => this.isFolded = isFolded);
         this.themeService.isExpandChanges.subscribe(isExpand => this.isExpand = isExpand);
+        this.currentUserName = this.storage.get(LOCAL_STORAGE_KEYS.USER_NAME);
     }
 
     toggleFold(): void {
