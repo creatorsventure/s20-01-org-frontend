@@ -1,5 +1,6 @@
 import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, forwardRef, Injector, Input, OnInit, Output} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import {ControlValueAccessorDirective} from '../../../directives/ControlValueAccessorDirective';
 import {PhoneNumberUtil} from 'google-libphonenumber';
 import * as countries from 'i18n-iso-countries';
@@ -28,6 +29,7 @@ export class FormPhoneComponent extends ControlValueAccessorDirective<string> im
     @Input() override isDisabled = false;
     @Input() crudOps: string;
     @Input() controlDesc: any;
+    @Input() parentForm!: FormGroup;
 
     @Output() countryCodeChange = new EventEmitter<string>();
 
@@ -45,23 +47,35 @@ export class FormPhoneComponent extends ControlValueAccessorDirective<string> im
     }
 
     override ngOnInit(): void {
-        this.setFormControl();
+      this.setFormControl();
 
-        const regions = Array.from(this.phoneUtil.getSupportedRegions());
-        this.countryList = regions.map(code => {
-            try {
-                const example = this.phoneUtil.getExampleNumber(code);
-                const dialCode = '+' + example.getCountryCode();
-                const name = countries.getName(code, 'en') || code;
-                const flag = this.getFlagEmoji(code);
-                return {code, name, dialCode, flag};
-            } catch {
-                return null;
-            }
-        }).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name));
+      const regions = Array.from(this.phoneUtil.getSupportedRegions());
+      this.countryList = regions.map(code => {
+        try {
+          const example = this.phoneUtil.getExampleNumber(code);
+          const dialCode = '+' + example.getCountryCode();
+          const name = countries.getName(code, 'en') || code;
+          const flag = this.getFlagEmoji(code);
+          return { code, name, dialCode, flag };
+        } catch {
+          return null;
+        }
+      }).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name));
 
+    if(this.crudOps === this.permissions.view || this.crudOps === this.permissions.edit){
+
+      const dbValue = this.parentForm?.get('countryCode')?.value;
+
+      if (dbValue) {
+        this.selectedCountry = this.countryList.find(c => c.dialCode === dbValue);
+      }
+    }
+
+      if (!this.selectedCountry) {
         this.selectedCountry = this.countryList.find(c => c.code === 'OM') || this.countryList[0];
-        this.countryCodeChange.emit(this.selectedCountry.dialCode);
+      }
+
+      this.countryCodeChange.emit(this.selectedCountry.dialCode);
     }
 
     ngAfterViewInit(): void {
@@ -102,7 +116,8 @@ export class FormPhoneComponent extends ControlValueAccessorDirective<string> im
 
     onCountryChange(code: string): void {
         const selected = this.countryList.find(c => c.code === code);
-        if (!selected) {
+        console.log('country code:', selected);
+        if (!selected || selected.code === this.selectedCountry.code) {
             return;
         }
 

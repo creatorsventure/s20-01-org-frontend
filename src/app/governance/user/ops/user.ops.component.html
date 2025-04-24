@@ -9,7 +9,7 @@
 
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
             <app-form-phone [controlDesc]="controlDesc.phone" controlName="mobileNumber"
-                            (countryCodeChange)="crudForm.get('countryCode')?.setValue($event)"
+                            [parentForm]="crudForm" (countryCodeChange)="crudForm.get('countryCode')?.setValue($event)"
                             [pageName]="pageName" [crudOps]="crudOps" formControlName="mobileNumber"/>
         </div>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
