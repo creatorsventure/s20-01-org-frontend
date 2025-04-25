@@ -132,6 +132,9 @@ export abstract class OpsAbstract {
     }
 
     redirectToListPage(): void {
+        if (this.pageName === 'password') {
+            return;
+        }
         if (this.crudOps === this.permissions.add) {
             this.router.navigate(['../'], {relativeTo: this.activatedRoute, skipLocationChange: true});
         } else if (this.crudOps === this.permissions.view || this.crudOps === this.permissions.edit) {
