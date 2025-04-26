@@ -40,7 +40,9 @@ export class ModuleIndexComponent implements OnInit {
     }
 
     redirectToListPage(): void {
-        this.router.navigateByUrl(this.parent + '/' + this.pageName);
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate([this.parent + '/' + this.pageName]);
+        });
     }
 
     redirectToAddPage(): void {

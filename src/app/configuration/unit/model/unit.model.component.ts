@@ -12,5 +12,8 @@ export interface IUnit extends GenericModelType {
     selectedEngineIds: string[];
     selectedOptionsId: string;
     adminName: string;
+    adminUserId: string;
     adminEmail: string;
+    adminMobileNumber: string;
+    adminCountryCode: string;
 }

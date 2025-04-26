@@ -23,7 +23,8 @@ export class OptionsOpsComponent extends OpsAbstract implements OnInit {
         super.init();
         this.crudForm = this.fb.group({
             captcha: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.switch, this.object?.captcha),
-            otpAuthentication: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.switch, this.object?.otpAuthentication),
+            transactionOTP: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.switch, this.object?.transactionOTP),
+            loginOTP: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.switch, this.object?.loginOTP),
             tokenization: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.switch, this.object?.tokenization),
             cvvSecurity: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.switch, this.object?.cvvSecurity),
             makerCheckerMode: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.switch, this.object?.makerCheckerMode),

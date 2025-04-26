@@ -25,6 +25,14 @@
 
         </div>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-input [controlDesc]="controlDesc.inputSpecial" controlName="address"
+                            [pageName]="pageName" [crudOps]="crudOps" formControlName="address"/>
+
+        </div>
+    </div>
+    <nz-divider></nz-divider>
+    <div nz-row>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
             <app-form-input [controlDesc]="controlDesc.input" controlName="adminName"
                             [pageName]="pageName" [crudOps]="crudOps" formControlName="adminName"/>
 
@@ -34,25 +42,21 @@
                             [pageName]="pageName" [crudOps]="crudOps" formControlName="adminEmail"/>
 
         </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-input [controlDesc]="controlDesc.code" controlName="adminUserId"
+                            [pageName]="pageName" [crudOps]="crudOps" formControlName="adminUserId"/>
+
+        </div>
     </div>
     <div nz-row>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
-            <app-form-input [controlDesc]="controlDesc.inputSpecial" controlName="address"
-                            [pageName]="pageName" [crudOps]="crudOps" formControlName="address"/>
-
-        </div>
-        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
-            <app-form-select-one formControlName="selectedOptionsId" controlName="selectedOptionsId"
-                                 [controlOptions]="optionsIdNameMap"
-                                 [pageName]="pageName" [crudOps]="crudOps"/>
-        </div>
-        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
-            <app-form-select-one controlName="type" formControlName="type"
-                                 [controlOptions]="unitTypeOptions"
-                                 [pageName]="pageName" [crudOps]="crudOps"/>
-
+            <app-form-phone [controlDesc]="controlDesc.phone" controlName="adminMobileNumber"
+                            [parentForm]="crudForm"
+                            (countryCodeChange)="onCountryCodeChange( $event, 'adminCountryCode')"
+                            [pageName]="pageName" [crudOps]="crudOps" formControlName="adminMobileNumber"/>
         </div>
     </div>
+    <nz-divider></nz-divider>
     <div nz-row>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
             <app-form-select-many formControlName="selectedActionIds" controlName="selectedActionIds"
@@ -68,6 +72,18 @@
             <app-form-select-many formControlName="selectedEngineIds" controlName="selectedEngineIds"
                                   [controlOptions]="engineIdNameMap"
                                   [pageName]="pageName" [crudOps]="crudOps"/>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-select-one formControlName="selectedOptionsId" controlName="selectedOptionsId"
+                                 [controlOptions]="optionsIdNameMap"
+                                 [pageName]="pageName" [crudOps]="crudOps"/>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-select-one controlName="type" formControlName="type"
+                                 [controlOptions]="unitTypeOptions"
+                                 [pageName]="pageName" [crudOps]="crudOps"/>
         </div>
     </div>
     <app-form-audit [object]="object" [crudOps]="crudOps"></app-form-audit>

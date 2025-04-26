@@ -237,7 +237,8 @@
         "description": "Options can be created here!",
         "label": {
           "captcha": "Captcha",
-          "otpAuthentication": "OTP",
+          "transactionOTP": "Transaction OTP",
+          "loginOTP": "Login OTP",
           "tokenization": "Tokenization",
           "cvvSecurity": "CVV",
           "makerCheckerMode": "Maker/Checker",
@@ -273,7 +274,10 @@
           "address": "Address",
           "bankIdentificationCode": "BIC",
           "adminName": "Admin Name",
+          "adminUserId": "Admin User Id",
           "adminEmail": "Admin Email",
+          "adminMobileNumber": "Admin Mobile",
+          "adminCountryCode": "Admin Country Code",
           "type": "Type",
           "selectedActionIds": "Action",
           "selectedCurrencyIds": "Currency",
@@ -284,6 +288,7 @@
     },
     "regxPatterns": {
       "input": "Upper case, Lower case, Numeric, Underscore, Space",
+      "code": "Upper case, Lower case, Numeric",
       "inputSpecial": "Upper case, Lower case, Numeric, Underscore, Comma, Slash, Hyphen, Dot",
       "numeric": "Numeric",
       "password": "Upper case, Lower case, Numeric, @ $ #",

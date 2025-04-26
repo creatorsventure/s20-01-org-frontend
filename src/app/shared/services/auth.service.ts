@@ -17,7 +17,7 @@ export class AuthService {
         private http: HttpClient,
         private router: Router,
         private storage: StorageService) {
-        this.endPoint = environment.orgServiceApiURL;
+        this.endPoint = environment.primaryBackendUrl;
     }
 
     isLoggedIn(): boolean {

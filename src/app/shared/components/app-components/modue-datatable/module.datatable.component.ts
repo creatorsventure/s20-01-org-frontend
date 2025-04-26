@@ -105,9 +105,7 @@ export class ModuleDatatableComponent implements OnInit {
 
     public signUpMail(id: number): void {
         this.service
-            .read(APP_NAVIGATION.unit + API_METHOD.signupMail, [
-                {key: 'id', value: id},
-            ])
+            .read(APP_NAVIGATION.unit + API_METHOD.signupMail, [{key: 'id', value: id}])
             .subscribe({
                 next: (status) => {
                     if (status) {

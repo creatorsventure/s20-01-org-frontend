@@ -7,12 +7,12 @@
                              [pageName]="pageName" [crudOps]="crudOps" formControlName="captcha"/>
         </div>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
-            <app-form-switch [controlDesc]="controlDesc.switch" controlName="otpAuthentication"
-                             [pageName]="pageName" [crudOps]="crudOps" formControlName="otpAuthentication"/>
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="transactionOTP"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="transactionOTP"/>
         </div>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
-            <app-form-switch [controlDesc]="controlDesc.switch" controlName="tokenization"
-                             [pageName]="pageName" [crudOps]="crudOps" formControlName="tokenization"/>
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="loginOTP"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="loginOTP"/>
         </div>
     </div>
     <div nz-row>
@@ -27,6 +27,12 @@
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
             <app-form-switch [controlDesc]="controlDesc.switch" controlName="masking"
                              [pageName]="pageName" [crudOps]="crudOps" formControlName="masking"/>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="tokenization"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="tokenization"/>
         </div>
     </div>
     <app-form-audit [object]="object" [crudOps]="crudOps"></app-form-audit>
