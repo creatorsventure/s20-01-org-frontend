@@ -1,8 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {Component, Host, Input, Optional} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {updateFormPristineAndUntouched} from '../../../utils/utils';
 import {APP_NAVIGATION} from '../../../routes/navigation.constant';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AlertService} from "../../../services/alert.service";
 
 @Component({
     selector: 'app-form-submit-buttons',
@@ -25,13 +26,32 @@ export class FormSubmitButtonsComponent {
     @Input()
     public backButtonDisplay = true;
 
+    private _originalData: any;
+
     public permissions: any = APP_NAVIGATION.permissions;
 
-    constructor(public router: Router, private route: ActivatedRoute) {
+    constructor(public router: Router, private route: ActivatedRoute, private alertService: AlertService) {
+    }
+
+    get isEditModeInternal(): boolean {
+        return this.crudOps === this.permissions.edit;
+    }
+
+    @Input()
+    set originalDataInput(data: any) {
+        this._originalData = data;
     }
 
     reset(): void {
-        updateFormPristineAndUntouched(this.crudForm);
+
+        if (this.isEditModeInternal && this._originalData && Object.keys(this._originalData).length > 0) {
+            const resetData = Object.fromEntries(
+                Object.keys(this.crudForm.controls).map(key => [key, this._originalData[key] ?? null])
+            );
+            this.crudForm.reset(resetData);
+        } else {
+            updateFormPristineAndUntouched(this.crudForm);
+        }
     }
 
     redirectToListPage(): void {

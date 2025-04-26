@@ -1,4 +1,6 @@
-<form nz-form [formGroup]="crudForm" (ngSubmit)="createOrUpdate()">
+<nz-spin *ngIf="!isObjectReady && (crudOps === permissions.edit || crudOps === permissions.view)" nzTip="Loading form..."></nz-spin>
+
+<form *ngIf="crudForm" nz-form [formGroup]="crudForm" (ngSubmit)="createOrUpdate()">
     <app-form-general [parentForm]="crudForm" [pageName]="pageName" [crudOps]="crudOps"
                       [object]="object"></app-form-general>
     <div nz-row>
@@ -9,5 +11,5 @@
         </div>
     </div>
     <app-form-audit [object]="object" [crudOps]="crudOps"></app-form-audit>
-    <app-form-submit-buttons [crudOps]="crudOps" [crudForm]="crudForm"></app-form-submit-buttons>
+    <app-form-submit-buttons *ngIf="crudOps === permissions.add || isObjectReady" [crudOps]="crudOps" [crudForm]="crudForm" [originalDataInput]="object"></app-form-submit-buttons>
 </form>

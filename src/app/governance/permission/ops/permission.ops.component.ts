@@ -10,6 +10,7 @@ import {CONTROL_DESCRIPTION} from '../../../shared/constant/control.constant';
 
 @Component({selector: 'app-permission-ops', templateUrl: './permission.ops.component.html', styles: [], standalone: false})
 export class PermissionOpsComponent extends OpsAbstract implements OnInit {
+    public isObjectReady: boolean = false;
 
     constructor(
         public override fb: FormBuilder,
@@ -23,9 +24,40 @@ export class PermissionOpsComponent extends OpsAbstract implements OnInit {
 
     ngOnInit(): void {
         super.init();
+
+        if (this.crudOps === APP_NAVIGATION.permissions.edit || this.crudOps === APP_NAVIGATION.permissions.view) {
+            const id = this.activatedRoute.snapshot.params['id'];
+            this.loadData(id);
+        } else {
+            this.initializeForm(); // empty form for add
+        }
+    }
+
+    private loadData(id: string): void {
+        this.crudService.read('permission', [{ key: 'id', value: id }]).subscribe({
+            next: (data) => {
+                this.object = data;
+                this.isObjectReady = true;
+                this.initializeForm(data);
+
+                if (this.crudOps === APP_NAVIGATION.permissions.view) {
+                    this.crudForm.disable();
+                }
+            },
+            error: (err) => {
+                console.error('Failed to load data', err);
+                this.alertService.error('app.message.failure.f001', true);
+                this.router.navigate(['/error']);
+            }
+        });
+    }
+
+    private initializeForm(data?: any): void {
         this.crudForm = this.fb.group({
             permissionCode: this.appCtrlService.generateFormControl(
-                CONTROL_DESCRIPTION.input, this.object?.permissionCode)
+                CONTROL_DESCRIPTION.input,
+                data?.permissionCode || null
+            )
         });
     }
 
