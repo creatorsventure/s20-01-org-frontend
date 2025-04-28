@@ -1,9 +1,8 @@
-import {Component, Host, Input, Optional} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {updateFormPristineAndUntouched} from '../../../utils/utils';
 import {APP_NAVIGATION} from '../../../routes/navigation.constant';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AlertService} from "../../../services/alert.service";
 
 @Component({
     selector: 'app-form-submit-buttons',
@@ -30,7 +29,7 @@ export class FormSubmitButtonsComponent {
 
     public permissions: any = APP_NAVIGATION.permissions;
 
-    constructor(public router: Router, private route: ActivatedRoute, private alertService: AlertService) {
+    constructor(public router: Router, private route: ActivatedRoute) {
     }
 
     get isEditModeInternal(): boolean {
