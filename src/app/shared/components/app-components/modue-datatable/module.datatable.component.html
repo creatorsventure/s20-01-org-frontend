@@ -100,15 +100,15 @@
     </tbody>
 </nz-table>
 <ng-template #nodata>
-    <nz-empty [nzNotFoundContent]="contentTpl">                     <!--[nzNotFoundFooter]="footerTpl">-->
+    <nz-empty [nzNotFoundContent]="contentTpl" [nzNotFoundFooter]="footerTpl">
         <ng-template #contentTpl>
             <span> {{ 'app.general.pagination.noData' | translate }} </span>
         </ng-template>
-        <!--<ng-template #footerTpl>
-            <a *ngIf="sessionPermissions.includes(permissions.add)" nz-button nzType="primary" nzSize="small"
+        <ng-template #footerTpl>
+            <a *ngIf="sessionPermissions.includes(permissions.add) && pageName !== 'organization'" nz-button nzType="primary" nzSize="small"
                routerLink="add">
                 <i nz-icon nzType="plus-circle"></i>{{ 'app.general.button.add' | translate }}
             </a>
-        </ng-template>-->
+        </ng-template>
     </nz-empty>
 </ng-template>

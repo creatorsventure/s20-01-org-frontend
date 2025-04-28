@@ -344,6 +344,7 @@
         "022": "Please enter the user id",
         "023": "DB error occurred, Possible duplicate. Check the logs. ",
         "024": "Invalid URL.",
+        "025": "Password not found",
         "COMMENT-04": "core and front-end only errors - end",
         "COMMENT-05": "Org service errors - start",
         "COMMENT-06": "Org service errors - end"
