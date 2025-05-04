@@ -30,7 +30,7 @@ export class UnitOpsComponent extends OpsAbstract implements OnInit {
         super.init();
         this.crudForm = this.fb.group({
             unitCode: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.unitCode),
-            unitId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.unitId),
+            unitId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.numeric, this.object?.unitId),
             legalName: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.legalName, false),
             address: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.inputSpecial, this.object?.address),
             bankIdentificationCode: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.bankIdentificationCode),
