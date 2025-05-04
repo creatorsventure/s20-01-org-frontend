@@ -7,19 +7,15 @@
                              [pageName]="pageName" [crudOps]="crudOps" formControlName="captcha"/>
         </div>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
-            <app-form-switch [controlDesc]="controlDesc.switch" controlName="transactionOTP"
-                             [pageName]="pageName" [crudOps]="crudOps" formControlName="transactionOTP"/>
-        </div>
-        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
             <app-form-switch [controlDesc]="controlDesc.switch" controlName="loginOTP"
                              [pageName]="pageName" [crudOps]="crudOps" formControlName="loginOTP"/>
         </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="tokenization"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="tokenization"/>
+        </div>
     </div>
     <div nz-row>
-        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
-            <app-form-switch [controlDesc]="controlDesc.switch" controlName="cvvSecurity"
-                             [pageName]="pageName" [crudOps]="crudOps" formControlName="cvvSecurity"/>
-        </div>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
             <app-form-switch [controlDesc]="controlDesc.switch" controlName="makerCheckerMode"
                              [pageName]="pageName" [crudOps]="crudOps" formControlName="makerCheckerMode"/>
@@ -29,10 +25,19 @@
                              [pageName]="pageName" [crudOps]="crudOps" formControlName="masking"/>
         </div>
     </div>
+    <nz-divider nzPlain nzText="{{'app.page.options.label.enforce-hint' | translate}}"></nz-divider>
     <div nz-row>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
-            <app-form-switch [controlDesc]="controlDesc.switch" controlName="tokenization"
-                             [pageName]="pageName" [crudOps]="crudOps" formControlName="tokenization"/>
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="enforce"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="enforce"/>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="transactionOTP"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="transactionOTP"/>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-switch [controlDesc]="controlDesc.switch" controlName="cvvSecurity"
+                             [pageName]="pageName" [crudOps]="crudOps" formControlName="cvvSecurity"/>
         </div>
     </div>
     <app-form-audit [object]="object" [crudOps]="crudOps"></app-form-audit>

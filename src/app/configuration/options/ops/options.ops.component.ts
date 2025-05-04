@@ -22,6 +22,7 @@ export class OptionsOpsComponent extends OpsAbstract implements OnInit {
     ngOnInit(): void {
         super.init();
         this.crudForm = this.fb.group({
+            enforce: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.switch, this.object?.enforce),
             captcha: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.switch, this.object?.captcha),
             transactionOTP: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.switch, this.object?.transactionOTP),
             loginOTP: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.switch, this.object?.loginOTP),
@@ -33,16 +34,28 @@ export class OptionsOpsComponent extends OpsAbstract implements OnInit {
     }
 
     override customUpdateValidations(): boolean {
-        return true;
+        return this.checkEnforcedValues();
     }
 
     override customCreateValidations(): boolean {
-        return true;
+        return this.checkEnforcedValues();
     }
 
     override customPostSuccessOps(): void {
     }
 
     override customPostFailureOps(): void {
+    }
+
+    private checkEnforcedValues(): boolean {
+        if (!this.crudForm.get('enforce')?.value) {
+            if (this.crudForm.get('cvvSecurity')?.value ||
+                this.crudForm.get('transactionOTP')?.value) {
+                this.alertService.error('app.message.failure.f007', true);
+                return false;
+            }
+            return true;
+        }
+        return true;
     }
 }
