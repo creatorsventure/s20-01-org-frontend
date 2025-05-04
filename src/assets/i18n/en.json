@@ -107,7 +107,12 @@
         "password": "Password",
         "password-hint": "Please input your Password!",
         "forgot-password": "Forget Password?",
-        "login-link-2": "login here!"
+        "login-link-1": "Already have password",
+        "login-link-2": "login here!",
+        "confirm-password": "Confirm",
+        "confirm-password-hint": "Please confirm your password!",
+        "signup-failure-title": "Operation failed",
+        "signup-success-title": "Operation completed successfully"
       },
       "activate-account": {
         "success": "Account activation success!",
