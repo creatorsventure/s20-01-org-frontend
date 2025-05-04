@@ -237,7 +237,8 @@
         "description": "Options can be created here!",
         "label": {
           "enforce": "Enforce",
-          "enforce-hint": "Unit level options",
+          "enforce-hint-1": "Mandatory policies",
+          "enforce-hint-2": "Optional policies",
           "captcha": "Captcha",
           "transactionOTP": "Transaction OTP",
           "loginOTP": "Login OTP",
