@@ -319,7 +319,7 @@
         "f002": "Please select menu details.",
         "COMMENT-02": "front-end only errors - start",
         "COMMENT-03": "core and front-end only errors - start",
-        "000": "Problem occurred. Please try again later.",
+        "000": "Operation failed. Please try again.",
         "001": "Field should not be blank.",
         "002": "Field should not be empty.",
         "003": "Field required minimum/maximum length of input.",
