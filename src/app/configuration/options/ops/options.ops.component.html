@@ -24,17 +24,12 @@
             <app-form-switch [controlDesc]="controlDesc.switch" controlName="masking"
                              [pageName]="pageName" [crudOps]="crudOps" formControlName="masking"/>
         </div>
-    </div>
-    <nz-divider nzPlain nzText="{{'app.page.options.label.enforce-hint-2' | translate}}"></nz-divider>
-    <div nz-row>
-        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
-            <app-form-switch [controlDesc]="controlDesc.switch" controlName="enforce"
-                             [pageName]="pageName" [crudOps]="crudOps" formControlName="enforce"/>
-        </div>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
             <app-form-switch [controlDesc]="controlDesc.switch" controlName="transactionOTP"
                              [pageName]="pageName" [crudOps]="crudOps" formControlName="transactionOTP"/>
         </div>
+    </div>
+    <div nz-row>
         <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
             <app-form-switch [controlDesc]="controlDesc.switch" controlName="cvvSecurity"
                              [pageName]="pageName" [crudOps]="crudOps" formControlName="cvvSecurity"/>
