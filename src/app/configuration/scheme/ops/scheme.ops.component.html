@@ -6,6 +6,10 @@
             <app-form-input [controlDesc]="controlDesc.input" controlName="code"
                             [pageName]="pageName" [crudOps]="crudOps" formControlName="code"/>
         </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" [nzXl]="8" [nzXXl]="8">
+            <app-form-numeric controlName="priority" [controlDesc]="controlDesc.numeric"
+                              [pageName]="pageName" [crudOps]="crudOps" formControlName="priority"/>
+        </div>
     </div>
     <app-form-audit [object]="object" [crudOps]="crudOps"></app-form-audit>
     <app-form-submit-buttons [crudOps]="crudOps" [crudForm]="crudForm"></app-form-submit-buttons>

@@ -22,7 +22,8 @@ export class SchemeOpsComponent extends OpsAbstract implements OnInit {
     ngOnInit(): void {
         super.init();
         this.crudForm = this.fb.group({
-            code: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.code)
+            code: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.code),
+            priority: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.numeric, this.object?.priority),
         });
     }
 

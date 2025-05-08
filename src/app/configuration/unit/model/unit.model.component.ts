@@ -10,6 +10,7 @@ export interface IUnit extends GenericModelType {
     selectedActionIds: string[];
     selectedCurrencyIds: string[];
     selectedEngineIds: string[];
+    selectedSchemeIds: string[];
     selectedOptionsId: string;
     adminName: string;
     adminUserId: string;

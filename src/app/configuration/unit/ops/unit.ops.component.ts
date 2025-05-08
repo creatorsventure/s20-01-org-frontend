@@ -14,6 +14,7 @@ export class UnitOpsComponent extends OpsAbstract implements OnInit {
     actionIdNameMap: Map<string, string>;
     currencyIdNameMap: Map<string, string>;
     engineIdNameMap: Map<string, string>;
+    schemeIdNameMap: Map<string, string>;
     optionsIdNameMap: Map<string, string>;
     unitTypeOptions = unitTypeOptions;
 
@@ -29,7 +30,7 @@ export class UnitOpsComponent extends OpsAbstract implements OnInit {
     ngOnInit(): void {
         super.init();
         this.crudForm = this.fb.group({
-            unitCode: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.unitCode),
+            unitCode: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.code, this.object?.unitCode),
             unitId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.numeric, this.object?.unitId),
             legalName: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.input, this.object?.legalName, false),
             address: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.inputSpecial, this.object?.address),
@@ -43,6 +44,7 @@ export class UnitOpsComponent extends OpsAbstract implements OnInit {
             selectedActionIds: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectMany, this.object?.selectedActionIds),
             selectedCurrencyIds: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectMany, this.object?.selectedCurrencyIds),
             selectedEngineIds: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectMany, this.object?.selectedEngineIds),
+            selectedSchemeIds: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectMany, this.object?.selectedSchemeIds),
             selectedOptionsId: this.appCtrlService.generateFormControl(CONTROL_DESCRIPTION.selectOne, this.object?.selectedOptionsId),
         });
         this.crudService.getData(APP_NAVIGATION.action + API_METHOD.idNameMap).subscribe(idNameMap => {
@@ -56,6 +58,9 @@ export class UnitOpsComponent extends OpsAbstract implements OnInit {
         });
         this.crudService.getData(APP_NAVIGATION.options + API_METHOD.idNameMap).subscribe(idNameMap => {
             this.optionsIdNameMap = idNameMap;
+        });
+        this.crudService.getData(APP_NAVIGATION.scheme + API_METHOD.idNameMap).subscribe(idNameMap => {
+            this.schemeIdNameMap = idNameMap;
         });
     }
 

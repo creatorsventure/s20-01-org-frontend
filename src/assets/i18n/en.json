@@ -217,7 +217,8 @@
         "name": "Scheme",
         "description": "Scheme can be created here!",
         "label": {
-          "code": "Code"
+          "code": "Code",
+          "priority": "Priority"
         }
       },
       "merchant-category": {
@@ -290,7 +291,8 @@
           "selectedActionIds": "Action",
           "selectedCurrencyIds": "Currency",
           "selectedEngineIds": "Engine",
-          "selectedOptionsId": "Options"
+          "selectedOptionsId": "Options",
+          "selectedSchemeIds": "Scheme"
         }
       }
     },
